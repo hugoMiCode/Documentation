@@ -32,71 +32,9 @@ plugins:
 # Navigation
 nav:
   - Accueil: index.md
+  - Vision & Objectifs: vision.md
+  - Vue Globale: global.md
   
-  - Vue d'ensemble:
-      - Introduction: overview/introduction.md
-      - Architecture Système: overview/architecture.md
-      - Glossaire: overview/glossary.md
-      - Spécifications: overview/specifications.md
-  
-  - Gestion de Projet:
-      - Vision & Objectifs: project/vision.md
-      - Planification: project/planning.md
-      - Roadmap: project/roadmap.md
-      - User Stories: project/user-stories.md
-      - Cas d'Usage: project/use-cases.md
-  
-  - Architecture:
-      - Vue Globale: architecture/global.md
-      - Diagrammes UML: architecture/uml.md
-      - Communication: architecture/communication.md
-      - Flux de Données: architecture/data-flow.md
-  
-  - Composants Hardware:
-      - Vue d'ensemble: hardware/overview.md
-      - Tag UWB: hardware/tag.md
-      - Anchor UWB: hardware/anchor.md
-      - Puces IR: hardware/ir-beacons.md
-      - Station de Base: hardware/base-station.md
-  
-  - Composants Software:
-      - Tag Firmware:
-          - Architecture: software/tag/architecture.md
-          - UWBTag: software/tag/uwb-tag.md
-          - IRReceiver: software/tag/ir-receiver.md
-          - DisplayManager: software/tag/display.md
-          - LinkNodes: software/tag/link-nodes.md
-          - API: software/tag/api.md
-      
-      - Anchor Firmware:
-          - Architecture: software/anchor/architecture.md
-          - UWBAnchor: software/anchor/uwb-anchor.md
-          - Calibrator: software/anchor/calibrator.md
-          - DisplayManager: software/anchor/display.md
-          - LinkNodes: software/anchor/link-nodes.md
-          - API: software/anchor/api.md
-      
-      - Libraries Partagées:
-          - UWBCommunicationBase: software/shared/uwb-communication.md
-          - MessageDecoder: software/shared/message-decoder.md
-          - WifiCommunication: software/shared/wifi.md
-          - DisplayManagerBase: software/shared/display-base.md
-      
-      - Station de Base:
-          - Architecture: software/base-station/architecture.md
-          - Collecte Données: software/base-station/data-collection.md
-          - Interface Web: software/base-station/web-interface.md
-          - Télécommande: software/base-station/remote-control.md
-          - Enregistrement SD: software/base-station/sd-storage.md
-          - API: software/base-station/api.md
-      
-      - Application Desktop:
-          - Architecture: software/desktop/architecture.md
-          - Import Données: software/desktop/data-import.md
-          - Traitement: software/desktop/data-processing.md
-          - Visualisation: software/desktop/visualization.md
-          - Stockage Cloud: software/desktop/cloud-storage.md
-          - Interface Utilisateur: software/desktop/ui.md
 
 extra_css:
   - stylesheets/extra.css

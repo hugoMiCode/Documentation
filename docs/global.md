@@ -11,7 +11,6 @@ Le système suit une **architecture distribuée en couches** avec séparation cl
 
 ```puml
 @startuml
-' !theme blueprint
 skinparam componentStyle rectangle
 
 package "Couche Matérielle (Hardware Layer)" {
@@ -79,7 +78,6 @@ Cloud --> CloudDB
 
 ```puml
 @startuml
-' !theme blueprint
 
 package "Tag ESP32" {
   component "UWBTag" as UWB {
