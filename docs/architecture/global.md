@@ -454,38 +454,6 @@ end note
 
 ---
 
-## 🔐 Architecture Sécurité
-
-```plantuml
-@startuml
-!theme blueprint
-
-package "Security Layers" {
-  [WiFi WPA2-PSK] as WIFI_SEC
-  [Message CRC32] as CRC
-  [Device Authentication] as AUTH
-  [Data Encryption (AES)] as ENC
-  [Cloud JWT Tokens] as JWT
-}
-
-package "Threats Mitigated" {
-  [Eavesdropping] as THREAT1
-  [Data Corruption] as THREAT2
-  [Unauthorized Access] as THREAT3
-  [MITM Attacks] as THREAT4
-}
-
-WIFI_SEC ..> THREAT1 : Prevents
-CRC ..> THREAT2 : Detects
-AUTH ..> THREAT3 : Prevents
-ENC ..> THREAT4 : Prevents
-JWT ..> THREAT3 : Prevents
-
-@enduml
-```
-
----
-
 ## 💾 Architecture Données
 
 ### Modèle de Données
@@ -696,39 +664,6 @@ public:
 | **Visualization** | Plotly / Matplotlib / D3.js |
 | **Database** | SQLite |
 | **Cloud** | REST API (Node.js / FastAPI) |
-
----
-
-## 📈 Scalabilité
-
-### Support Multi-Tags
-
-```plantuml
-@startuml
-scale 600 width
-
-[*] --> "1-4 Tags" : Basic
-"1-4 Tags" --> "5-8 Tags" : Standard
-"5-8 Tags" --> "9-16 Tags" : Advanced
-"9-16 Tags" --> "17-32 Tags" : Future
-
-note right of "1-4 Tags"
-  • WiFi suffit
-  • Collision minimale
-end note
-
-note right of "5-8 Tags"
-  • TDMA scheduling
-  • Queuing nécessaire
-end note
-
-note right of "9-16 Tags"
-  • Multiple WiFi channels
-  • Load balancing
-end note
-
-@enduml
-```
 
 ---
 
