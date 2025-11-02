@@ -1,8 +1,8 @@
 # Système de Positionnement UWB pour Voitures RC
 
-<div style="text-align: center;">
+<!-- <div style="text-align: center;">
   <img src="assets/logo.png" alt="Logo UWB RC System" width="200"/>
-</div>
+</div> -->
 
 !!! info "Version Actuelle"
     **Version** : 1.0.0  
@@ -44,7 +44,7 @@ Ce projet open-source permet de créer un système complet de chronométrage et 
 
 ---
 
-```plantuml
+```puml
 @startuml
 ' !theme plain
 left to right direction
@@ -81,7 +81,7 @@ end note
 
 ## 📊 Diagramme d'Architecture Globale
 
-```plantuml
+```puml
 @startuml
 
 ' Définir les composants
@@ -105,7 +105,7 @@ package "Circuit RC" {
 
 ### 1. Positionnement UWB
 
-```plantuml
+```puml
 @startuml
 participant T as "Tag (Voiture RC)"
 participant A1 as "Anchor 1"
@@ -133,7 +133,7 @@ BS -> BS: Affichage temps réel
 
 ### 2. Chronométrage IR
 
-```plantuml
+```puml
 @startuml
 participant Car as "Voiture"
 participant Balise as "Balise IR"
@@ -154,7 +154,7 @@ Base -> Base: Traitement & stockage
 
 ### 3. Calibration Auto des Anchors
 
-```plantuml
+```puml
 @startuml
 
 state Anchor as "Anchor Mode"
@@ -226,7 +226,7 @@ Anchor --> Anchor : Waiting for next calibration
 | **ArduinoJson** | Parsing messages |
 | **Adafruit GFX** | Affichage OLED |
 | **WiFi ESP32** | Communication réseau |
-| **PlantUML** | Diagrammes UML |
+| **puml** | Diagrammes UML |
 | **MkDocs Material** | Documentation |
 
 ---

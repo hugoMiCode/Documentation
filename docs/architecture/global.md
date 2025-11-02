@@ -9,7 +9,7 @@
 
 Le système suit une **architecture distribuée en couches** avec séparation claire des responsabilités :
 
-```plantuml
+```puml
 @startuml
 ' !theme blueprint
 skinparam componentStyle rectangle
@@ -77,7 +77,7 @@ Cloud --> CloudDB
 
 ### Module 1 : Tags UWB (Mobile)
 
-```plantuml
+```puml
 @startuml
 ' !theme blueprint
 
@@ -142,7 +142,7 @@ WIFI_IF - WIFI
 
 ### Module 2 : Anchors UWB (Fixes)
 
-```plantuml
+```puml
 @startuml
 ' !theme blueprint
 
@@ -208,7 +208,7 @@ WIFI_IF - WIFI
 
 ### Module 3 : Station de Base
 
-```plantuml
+```puml
 @startuml
 ' !theme blueprint
 
@@ -280,7 +280,7 @@ SD --> SDFILES
 
 ### Module 4 : Application Desktop
 
-```plantuml
+```puml
 @startuml
 
 package "Desktop Application" {
@@ -365,7 +365,7 @@ CLOUD --> CLOUD_BE
 
 ### Scénario : Course en Temps Réel
 
-```plantuml
+```puml
 @startuml
 !theme blueprint
 
@@ -417,7 +417,7 @@ Station -> Station : Finalize SD files
 
 ### Topologie WiFi
 
-```plantuml
+```puml
 @startuml
 ' !theme blueprint
 
@@ -458,7 +458,7 @@ end note
 
 ### Modèle de Données
 
-```plantuml
+```puml
 @startuml
 !theme blueprint
 
@@ -523,7 +523,7 @@ Session ||--o{ Calibration
 
 ### Optimisations Clés
 
-```plantuml
+```puml
 @startuml
 !theme blueprint
 
@@ -584,7 +584,7 @@ public:
 
 ### 2. State Machine Pattern
 
-```plantuml
+```puml
 @startuml
 !theme blueprint
 
