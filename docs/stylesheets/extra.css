@@ -1,0 +1,120 @@
+/* Custom CSS pour la documentation */
+
+/* Améliorer les cartes grid */
+.md-typeset .grid.cards > ul > li {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Timeline custom styling */
+.timeline {
+    border-left: 3px solid var(--md-primary-fg-color);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.timeline-item {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--md-primary-fg-color);
+    border: 3px solid var(--md-default-bg-color);
+}
+
+/* KPI Cards */
+.kpi-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 10px;
+}
+
+.kpi-card h3 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.kpi-card p {
+    margin: 5px 0 0 0;
+    opacity: 0.9;
+}
+
+/* Status badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.status-completed { background: #4caf50; color: white; }
+.status-progress { background: #ff9800; color: white; }
+.status-planned { background: #2196f3; color: white; }
+.status-future { background: #9e9e9e; color: white; }
+
+/* Priority badges */
+.priority-high { color: #f44336; font-weight: bold; }
+.priority-medium { color: #ff9800; font-weight: bold; }
+.priority-low { color: #4caf50; font-weight: bold; }
+
+/* Code highlighting */
+.md-typeset code {
+    background-color: rgba(0,0,0,0.05);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Responsive images */
+.md-typeset img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Better tables */
+.md-typeset table:not([class]) {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Emphasis boxes */
+.emphasis-box {
+    border-left: 4px solid var(--md-primary-fg-color);
+    background: rgba(0,0,0,0.02);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+/* Print styles */
+@media print {
+    .md-header,
+    .md-sidebar,
+    .md-footer {
+        display: none;
+    }
+    
+    .md-content {
+        width: 100%;
+    }
+}

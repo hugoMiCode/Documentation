@@ -1,0 +1,169 @@
+site_name: Système de Positionnement UWB pour Voitures RC
+site_description: Documentation complète du système de chronométrage et positionnement UWB DW3000
+site_author: Hugo
+# repo_url: https://github.com/hugo/UWB-ESP32
+repo_name: UWB-ESP32
+
+theme:
+  name: material
+  language: fr
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
+  
+  features:
+    - navigation.instant      # Navigation rapide
+    - navigation.tracking     # URL mise à jour
+    - navigation.tabs         # Tabs en haut
+    - navigation.sections     # Sections dans sidebar
+    - navigation.expand       # Sections expandées
+    - navigation.top          # Bouton retour en haut
+    - search.suggest          # Suggestions recherche
+    - search.highlight        # Highlight résultats
+    - content.code.copy       # Copier code
+    - content.tabs.link       # Tabs liés
+  
+  icon:
+    repo: fontawesome/brands/github
+
+# Extensions Markdown
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - mdx_truly_sane_lists
+  - markdown.extensions.toc:
+      permalink: true
+
+# Plugins
+plugins:
+  - search:
+      lang: fr
+  - plantuml:
+      puml_url: http://www.plantuml.com/plantuml/
+      num_workers: 8
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: timeago
+
+# Navigation
+nav:
+  - Accueil: index.md
+  
+  - Vue d'ensemble:
+      - Introduction: overview/introduction.md
+      - Architecture Système: overview/architecture.md
+      - Glossaire: overview/glossary.md
+      - Spécifications: overview/specifications.md
+  
+  - Gestion de Projet:
+      - Vision & Objectifs: project/vision.md
+      - Planification: project/planning.md
+      - Roadmap: project/roadmap.md
+      - User Stories: project/user-stories.md
+      - Cas d'Usage: project/use-cases.md
+  
+  - Architecture:
+      - Vue Globale: architecture/global.md
+      - Diagrammes UML: architecture/uml.md
+      - Communication: architecture/communication.md
+      - Flux de Données: architecture/data-flow.md
+  
+  - Composants Hardware:
+      - Vue d'ensemble: hardware/overview.md
+      - Tag UWB: hardware/tag.md
+      - Anchor UWB: hardware/anchor.md
+      - Puces IR: hardware/ir-beacons.md
+      - Station de Base: hardware/base-station.md
+  
+  - Composants Software:
+      - Tag Firmware:
+          - Architecture: software/tag/architecture.md
+          - UWBTag: software/tag/uwb-tag.md
+          - IRReceiver: software/tag/ir-receiver.md
+          - DisplayManager: software/tag/display.md
+          - LinkNodes: software/tag/link-nodes.md
+          - API: software/tag/api.md
+      
+      - Anchor Firmware:
+          - Architecture: software/anchor/architecture.md
+          - UWBAnchor: software/anchor/uwb-anchor.md
+          - Calibrator: software/anchor/calibrator.md
+          - DisplayManager: software/anchor/display.md
+          - LinkNodes: software/anchor/link-nodes.md
+          - API: software/anchor/api.md
+      
+      - Libraries Partagées:
+          - UWBCommunicationBase: software/shared/uwb-communication.md
+          - MessageDecoder: software/shared/message-decoder.md
+          - WifiCommunication: software/shared/wifi.md
+          - DisplayManagerBase: software/shared/display-base.md
+      
+      - Station de Base:
+          - Architecture: software/base-station/architecture.md
+          - Collecte Données: software/base-station/data-collection.md
+          - Interface Web: software/base-station/web-interface.md
+          - Télécommande: software/base-station/remote-control.md
+          - Enregistrement SD: software/base-station/sd-storage.md
+          - API: software/base-station/api.md
+      
+      - Application Desktop:
+          - Architecture: software/desktop/architecture.md
+          - Import Données: software/desktop/data-import.md
+          - Traitement: software/desktop/data-processing.md
+          - Visualisation: software/desktop/visualization.md
+          - Stockage Cloud: software/desktop/cloud-storage.md
+          - Interface Utilisateur: software/desktop/ui.md
+  
+  - Protocoles & API:
+      - Protocole UWB: protocols/uwb.md
+      - Commandes AT: protocols/at-commands.md
+      - Messages WiFi: protocols/wifi-messages.md
+      - Format IR: protocols/ir-format.md
+      - API REST Station: protocols/rest-api.md
+      - Format Fichiers SD: protocols/file-formats.md
+  
+  - Guide Utilisateur:
+      - Installation: user-guide/installation.md
+      - Configuration Initiale: user-guide/initial-setup.md
+      - Calibration: user-guide/calibration.md
+      - Utilisation Quotidienne: user-guide/daily-usage.md
+      - Dépannage: user-guide/troubleshooting.md
+  
+  - Guide Développeur:
+      - Environnement Dev: dev-guide/environment.md
+      - Build & Flash: dev-guide/build-flash.md
+      - Debugging: dev-guide/debugging.md
+      - Tests: dev-guide/testing.md
+      - Contribution: dev-guide/contributing.md
+  
+  - Amélioration Continue:
+      - Plan Tag: improvement/tag-plan.md
+      - Plan Anchor: improvement/anchor-plan.md
+      - Plan Station: improvement/base-station-plan.md
+      - Plan Application: improvement/desktop-plan.md
+  
+  - Annexes:
+      - Références: annexes/references.md
+      - Changelog: annexes/changelog.md
+      - FAQ: annexes/faq.md
+      - Ressources: annexes/resources.md
+
+extra_css:
+  - stylesheets/extra.css
