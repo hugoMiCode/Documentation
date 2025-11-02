@@ -77,27 +77,26 @@ package "Circuit RC" {
 
 ```puml
 @startuml
-participant T as "Tag (Voiture RC)"
-participant A1 as "Anchor 1"
-participant A2 as "Anchor 2"
-participant A3 as "Anchor 3"
-participant BS as "Station Base"
+participant Tag as "Tag (Voiture RC)"
+participant Anchors as "Anchors"
+participant Station as "Station Base"
 
-T -> A1: Poll UWB (broadcast, t=0)
-T -> A2: Poll UWB (broadcast, t=0)
-T -> A3: Poll UWB (broadcast, t=0)
+Tag -> Station: Connexion WiFi
 
-par Réponses simultanées
-    A1 -> T: Distance = 1.23m
-    A2 -> T: Distance = 2.45m
-    A3 -> T: Distance = 3.67m
+group UWB Ranging
+    Tag -> Anchors: Poll UWB
+    Anchors -> Tag: Distances = [1.23, 2.45, 3.67]
+    Anchors -> Anchors: Affichage distances
+    Tag -> Tag: Affichage distances
+    Tag -> Station: Envoi distances
+
+    Station -> Station: Calcul position (trilatération)
+    Station -> Station: Filtrage Kalman
+    Station -> Station: Stockage données
+    Station -> Station: Affichage temps réel
 end
 
-T -> BS: Envoi distances (lot)
-BS -> BS: Calcul position (trilatération)
-BS -> BS: Filtrage Kalman
-BS -> BS: Stockage données
-BS -> BS: Affichage temps réel
+
 @enduml
 ```
 
@@ -108,6 +107,8 @@ BS -> BS: Affichage temps réel
 participant Car as "Voiture"
 participant Balise as "Balise IR"
 participant Base as "Station Base"
+
+Car -> Base: Connexion WiFi
 
 Car -> Balise: Passage devant balise
 Balise -> Car: Signal IR

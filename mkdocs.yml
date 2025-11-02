@@ -4,18 +4,38 @@ site_author: Hugo
 # repo_url: https://github.com/hugo/UWB-ESP32
 repo_name: UWB-ESP32
 
-theme: readthedocs
+theme:
+  name: material
+  language: fr
+  palette:
+    # Mode clair
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Mode sombre
+    # Mode sombre
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Mode clair
 
-# Extensions Markdown
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - mdx_truly_sane_lists
-  - markdown.extensions.toc:
-      permalink: true
+  features:
+    - navigation.instant      # Navigation rapide
+    - navigation.tracking     # URL mise à jour
+    - navigation.tabs        # Onglets en haut
+    - navigation.sections    # Sections dans la barre latérale
+    - navigation.expand      # Sections développées
+    - navigation.top         # Bouton retour en haut
+    - search.suggest        # Suggestions de recherche
+    - search.highlight      # Surlignage des résultats
+    - content.code.copy     # Bouton copier le code
+    - content.tabs.link     # Onglets liés
 
 # Plugins
 plugins:
@@ -23,18 +43,9 @@ plugins:
       lang: fr
   - plantuml:
       puml_url: http://www.plantuml.com/plantuml/
-      output_format: svg
-      num_workers: 8
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-  #     type: timeago
 
 # Navigation
 nav:
   - Accueil: index.md
-  - Vision & Objectifs: vision.md
   - Vue Globale: global.md
   
-
-extra_css:
-  - stylesheets/extra.css

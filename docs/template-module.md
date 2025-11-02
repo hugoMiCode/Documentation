@@ -446,11 +446,6 @@ if (!data.isValid()) {
 - [Lien documentation 1](https://example.com)
 - [Lien documentation 2](https://example.com)
 
-### Code Source
-
-- [Fichier principal](../../src/module.cpp)
-- [Tests](../../test/test_module.cpp)
-
 ### Articles & Ressources
 
 - Article 1 : Titre et lien
