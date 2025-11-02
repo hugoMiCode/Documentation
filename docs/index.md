@@ -90,7 +90,7 @@ La station de base est le cerveau du système. Elle assure plusieurs fonctionnal
 
 ## Flux de Communication
 
-<!-- ```puml
+```puml
 @startuml
 participant "Tag" as T
 participant "Anchors" as A
@@ -133,7 +133,7 @@ group Loop IR
     deactivate B
 end
 @enduml
-``` -->
+```
 
 ## Calibration des Anchors
 
