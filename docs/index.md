@@ -3,7 +3,7 @@
 Ce projet implémente un système complet de positionnement en temps réel et de chronométrage pour voitures RC, basé sur la technologie **Ultra-Wideband (UWB)** avec les modules **DW3000**.
 
 
-## 🎯 Architecture Système
+## Architecture Système
 
 Le système se compose de trois composants principaux qui travaillent en synergie :
 
@@ -90,7 +90,7 @@ La station de base est le cerveau du système. Elle assure plusieurs fonctionnal
 
 ## Flux de Communication
 
-```puml
+<!-- ```puml
 @startuml
 participant "Tag" as T
 participant "Anchors" as A
@@ -133,7 +133,7 @@ group Loop IR
     deactivate B
 end
 @enduml
-```
+``` -->
 
 ## Calibration des Anchors
 
