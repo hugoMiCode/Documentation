@@ -57,6 +57,7 @@ plugins:
       lang: fr
   - plantuml:
       puml_url: http://www.plantuml.com/plantuml/
+      output_format: svg
       num_workers: 8
   # - git-revision-date-localized:
   #     enable_creation_date: true

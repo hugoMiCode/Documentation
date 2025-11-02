@@ -3,7 +3,7 @@ image: python:3.12-slim
 pages:
   stage: deploy
   script:
-    - pip install mkdocs-material mkdocs-build-plantuml-plugin mdx_truly_sane_lists
+    - pip install mkdocs-material mkdocs-build-plantuml-plugin mdx_truly_sane_lists mkdocs-plantuml-plugin
     - mkdocs build --site-dir public
   artifacts:
     paths:
