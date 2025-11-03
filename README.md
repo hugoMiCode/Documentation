@@ -38,7 +38,7 @@ cd /home/hugo/Repositories/UWB\ ESP32/documentation
 mkdocs serve
 ```
 
-Ouvrir http://127.0.0.1:8000 dans le navigateur ou https://documentation-00e10a.gitlab.io/ sur GitLab.
+Ouvrir http://127.0.0.1:8000 dans le navigateur ou https://hugomicode.github.io/Documentation/.
 
 Le serveur se recharge automatiquement à chaque modification !
 
