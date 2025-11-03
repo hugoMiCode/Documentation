@@ -1,0 +1,4 @@
+mkdocs>=1.6.0
+mkdocs-material>=9.6.0
+mkdocs-build-plantuml-plugin>=1.11.0
+mdx_truly_sane_lists>=1.3
