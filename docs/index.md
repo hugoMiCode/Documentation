@@ -146,7 +146,7 @@ Cette étape permet de construire un **repère cohérent**, dans lequel les posi
 
 ## Digramme d'état 
 
-```plantuml
+```puml
 @startuml
 title Diagramme d'état détaillé — Calibrator (version étendue)
 
@@ -186,7 +186,7 @@ state TAG_MODE {
 
 ## Diagramme de séquence
 
-```plantuml
+```puml
 @startuml
 title Séquence — Démarrage et déroulé d'une calibration
 participant Wifi as "WifiCommunication"
