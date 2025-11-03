@@ -107,6 +107,9 @@ group Loop Contrôle Système
     A -> A: Auto-calibration
     A -> B: Vecteur calibration
     deactivate A
+    activate B
+    B -> B: Calcul position Anchors
+    deactivate B
 end
 
 group Loop UWB
@@ -135,21 +138,184 @@ end
 @enduml
 ```
 
-## Calibration des Anchors
+# Calibration des Anchors
 
-La calibration des anchors est une étape cruciale pour assurer la précision du système de positionnement. Elle utilise des mesures UWB pour déterminer les distances relatives entre les anchors fixes. On obtient ainsi une matrice de calibration qui est ensuite utilisée pour créer un repère. Les positions des tags sont alors calculées par rapport à ce repère calibré.
+La **calibration des anchors** vise à déterminer les positions relatives des différentes ancres (points fixes) du système, à partir des **distances mutuelles mesurées** par les modules UWB.  
+Cette étape permet de construire un **repère cohérent**, dans lequel les positions ultérieures des *tags* pourront être exprimées.
 
 
-<!-- Explication détaillée de comment on obtient depuis la matrice de calibration le repère -->
+## Digramme d'état 
 
-### La matrice de calibration
+```plantuml
+@startuml
+title Diagramme d'état détaillé — Calibrator (version étendue)
 
-$$\begin{bmatrix}
+[*] --> ANCHOR_MODE
+ANCHOR_MODE --> TAG_MODE
+TAG_MODE --> ANCHOR_MODE
+
+note right of ANCHOR_MODE
+Mode anchor normal : répond aux polls,
+reçoit commandes de calibration.
+end note
+
+state ANCHOR_MODE {
+  [*] --> COLLECTING_TAG_DATA
+  COLLECTING_TAG_DATA --> COLLECTING_TAG_DATA : onRangingData() / update_tag_data()
+  COLLECTING_TAG_DATA --> [*] : startCalibration()
+}
+
+note right of TAG_MODE
+Le device est configuré en TAG 
+pour mesurer les distances 
+avec les autres anchors.
+end note
+
+state TAG_MODE {
+  state c <<choice>>
+
+  [*] --> COLLECTING : onRangingStart()
+  COLLECTING --> COLLECTING : onMeasurementReceived() / update_calibration_data()
+  COLLECTING --> c
+  c --> SENDING_DATA : enoughSamples()
+  c --> [*] : timeout
+  SENDING_DATA --> [*]
+}
+@enduml
+```
+
+## Diagramme de séquence
+
+```plantuml
+@startuml
+title Séquence — Démarrage et déroulé d'une calibration
+participant Wifi as "WifiCommunication"
+participant MessageDecoder as "MessageDecoder"
+participant Calibrator as "Calibrator"
+participant UWBAnchor as "UWBAnchor"
+participant Display as "DisplayManager"
+
+
+Wifi -> MessageDecoder : StartCalibration(deviceId)
+activate MessageDecoder
+MessageDecoder -> Calibrator : StartCalibration
+deactivate MessageDecoder
+activate Calibrator
+Calibrator -> Calibrator : resetCalibrationData()
+
+Calibrator -> UWBAnchor : switch to TAG mode
+activate UWBAnchor
+UWBAnchor -> UWBAnchor : apply TAG configuration
+deactivate UWBAnchor
+
+
+loop until calibration is finished
+UWBAnchor -> Calibrator : onRangingData()
+Calibrator -> Calibrator : updateCalibrationData()
+Calibrator -> Display : update display
+end
+
+
+alt enoughSamples
+Calibrator -> Calibrator : makeJSONFromCalibrationData()
+Calibrator -> Wifi : sendCalibrationData()
+end
+Calibrator -> Display : update display
+Calibrator -> Calibrator : endCalibration()
+deactivate Calibrator
+```
+
+### La matrice de distances
+
+Une fois les mesures de distances inter-anchors collectées, elles sont organisées dans une **matrice de distance** pour le traitement ultérieur :
+
+$$
+D =
+\begin{bmatrix}
 0 & d_{12} & d_{13} & \cdots & d_{1n} \\
 d_{21} & 0 & d_{23} & \cdots & d_{2n} \\
 d_{31} & d_{32} & 0 & \cdots & d_{3n} \\
 \vdots & \vdots & \vdots & \ddots & \vdots \\
 d_{n1} & d_{n2} & d_{n3} & \cdots & 0
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
-La matrice ci-dessus représente les distances mesurées entre chaque paire d'anchors. Chaque élément $d_{ij}$ correspond à la distance entre l'anchor $i$ et l'anchor $j$. Cette matrice est symétrique ($d_{ij} = d_{ji}$), avec des zéros sur la diagonale principale, car la distance entre une anchor et elle-même est nulle.
+où $d_{ij}$ désigne la distance mesurée entre les anchors $i$ et $j$.  
+En théorie, $D$ est symétrique ($d_{ij} = d_{ji}$), mais des écarts peuvent apparaître à cause du bruit de mesure ou d’erreurs de synchronisation.
+
+
+## Reconstruction des positions
+
+L’objectif est de retrouver les coordonnées $\mathbf{p}_i = (x_i, y_i)$ des $n$ anchors telles que :
+
+$$
+\|\mathbf{p}_i - \mathbf{p}_j\| \approx d_{ij}, \quad \forall (i, j)
+$$
+
+C’est un **problème de multidimensional scaling** (MDS) ou d’**ajustement géométrique par moindres carrés non linéaires**.
+
+## Mise en place du repère
+
+Pour lever l’ambiguïté liée aux rotations et translations, deux anchors sont fixées comme références :
+
+- $A_0$ est placée à l’origine : $\mathbf{p}_0 = (0, 0)$  
+- $A_1$ est placée sur l’axe des x : $\mathbf{p}_1 = (d_{01}, 0)$
+
+Les autres anchors $A_k$ sont initialisées par **triangulation** à partir de ces deux références :
+
+$$
+\begin{cases}
+x_k = \dfrac{d_{0k}^2 - d_{1k}^2 + d_{01}^2}{2d_{01}} \\
+y_k = \sqrt{d_{0k}^2 - x_k^2}
+\end{cases}
+$$
+
+Cette étape fournit une **estimation initiale** cohérente des positions.
+
+## Optimisation par descente de gradient
+
+Les positions initiales sont ensuite **optimisées numériquement** afin de minimiser l’erreur entre les distances mesurées et les distances géométriques reconstruites :
+
+$$
+E = \sum_{i<j} \left( \|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij} \right)^2
+$$
+
+Une **descente de gradient** met à jour les positions à chaque itération selon :
+
+$$
+\mathbf{p}_i \leftarrow \mathbf{p}_i - \eta \, \nabla_{\mathbf{p}_i} E
+$$
+
+où $\eta$ est le taux d’apprentissage, et le gradient s’écrit :
+
+$$
+\nabla_{\mathbf{p}_i} E = 2 \sum_{j \ne i} \left( \|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij} \right) \frac{\mathbf{p}_i - \mathbf{p}_j}{\|\mathbf{p}_i - \mathbf{p}_j\|}
+$$
+
+Pendant cette optimisation :
+- L’anchor $A_0$ reste fixe (origine du repère),
+- L’anchor $A_1$ reste sur l’axe des x (contrainte de rotation).
+
+L’algorithme converge lorsque l’erreur moyenne devient stable ou inférieure à un seuil défini.
+
+## Normalisation et échelle
+
+Une fois les positions obtenues, elles peuvent être **normalisées** afin de tenir dans un cadre cohérent (utile pour l’affichage ou le traitement ultérieur).  
+On calcule le **rectangle englobant** de toutes les positions, puis on met à l’échelle :
+
+$$
+\mathbf{p}_i^{(norm)} = \dfrac{\mathbf{p}_i - \mathbf{p}_{min}}{\max(\Delta x, \Delta y)}
+$$
+
+où $\Delta x$ et $\Delta y$ représentent les dimensions maximales du nuage de points.
+
+## Évaluation de l’erreur relative
+
+L’erreur finale est exprimée en **erreur quadratique moyenne relative** :
+
+$$
+\text{Erreur} = \frac{\sqrt{\dfrac{1}{N}\sum_{i<j} (\|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij})^2}}{\bar{d}} \times 100
+$$
+
+avec $\bar{d}$ la distance moyenne entre anchors.  
+Cette mesure reflète la cohérence géométrique du réseau d’anchors après calibration.
