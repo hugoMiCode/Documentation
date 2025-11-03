@@ -7,7 +7,7 @@ Ce projet implémente un système complet de positionnement en temps réel et de
 
 Le système se compose de trois composants principaux qui travaillent en synergie :
 
-```puml
+```plantuml
 @startuml
 !theme plain
 skinparam componentStyle rectangle
@@ -90,7 +90,7 @@ La station de base est le cerveau du système. Elle assure plusieurs fonctionnal
 
 ## Flux de Communication
 
-```puml
+```plantuml
 @startuml
 participant "Tag" as T
 participant "Anchors" as A
@@ -146,7 +146,7 @@ Cette étape permet de construire un **repère cohérent**, dans lequel les posi
 
 ## Digramme d'état 
 
-```puml
+```plantuml
 @startuml
 title Diagramme d'état détaillé — Calibrator (version étendue)
 
@@ -186,7 +186,7 @@ state TAG_MODE {
 
 ## Diagramme de séquence
 
-```puml
+```plantuml
 @startuml
 title Séquence — Démarrage et déroulé d'une calibration
 participant Wifi as "WifiCommunication"
@@ -223,6 +223,7 @@ end
 Calibrator -> Display : update display
 Calibrator -> Calibrator : endCalibration()
 deactivate Calibrator
+@enduml
 ```
 
 ### La matrice de distances

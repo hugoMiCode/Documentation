@@ -1,7 +1,7 @@
 site_name: Système de Positionnement UWB pour Voitures RC
 site_description: Documentation complète du système de chronométrage et positionnement UWB DW3000
 site_author: Hugo
-# repo_url: https://github.com/hugo/UWB-ESP32
+# repo_url: https://github.com/hugoMiCode/Documentation
 repo_name: UWB-ESP32
 
 theme:
@@ -52,14 +52,20 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: plantuml
+          class: plantuml
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 # Plugins
 plugins:
   - search:
       lang: fr
-  - plantuml:
-      puml_url: http://www.plantuml.com/plantuml/
+  # - plantuml:
+  #     puml_url: http://www.plantuml.com/plantuml/
+  - plantuml-local
+
 
 # Navigation
 nav:
