@@ -6,7 +6,7 @@ pages:
     - apt-get update
     - apt-get install -y default-jre graphviz plantuml
   script:
-    - pip install mkdocs mkdocs-material mkdocs-build-plantuml-plugin mdx_truly_sane_lists
+    - pip install mkdocs mkdocs-material mkdocs-build-plantuml-plugin mdx_truly_sane_lists mkdocs_puml
     - mkdocs build --site-dir public
   artifacts:
     paths:
