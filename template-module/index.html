@@ -1,0 +1,1552 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation complète du système de chronométrage et positionnement UWB DW3000">
+      
+      
+        <meta name="author" content="Hugo">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Template de Documentation - [NOM DU MODULE] - Système de Positionnement UWB pour Voitures RC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#template-de-documentation-nom-du-module" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Système de Positionnement UWB pour Voitures RC" class="md-header__button md-logo" aria-label="Système de Positionnement UWB pour Voitures RC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Système de Positionnement UWB pour Voitures RC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Template de Documentation - [NOM DU MODULE]
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../global/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Vue Globale
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Système de Positionnement UWB pour Voitures RC" class="md-nav__button md-logo" aria-label="Système de Positionnement UWB pour Voitures RC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Système de Positionnement UWB pour Voitures RC
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accueil
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vue Globale
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Vue d'Ensemble
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Vue d&#39;Ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description-generale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description Générale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectifs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objectifs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cas-dusage-principaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cas d'Usage Principaux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramme-de-composants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramme de Composants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composants-detailles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composants Détaillés
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composants Détaillés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composant-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Composant 1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flux-de-fonctionnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Flux de Fonctionnement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Flux de Fonctionnement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagramme-de-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagramme de Séquence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapes-detaillees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes Détaillées
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrammes-detat" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Diagrammes d'État
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Implémentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💻 Implémentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure de Fichiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classes-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes Principales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes Principales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classe-modulename" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classe ModuleName
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemples-de-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemples de Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exemples de Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-1-initialisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 1 : Initialisation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-2-utilisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple 2 : Utilisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔌 API &amp; Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔌 API &amp; Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-publique" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Publique
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Publique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fonctions-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fonctions Principales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callbacks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#format-des-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Format des Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Format des Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-entree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Entrée
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-sortie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Sortie
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paramètres
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fichier-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fichier de Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metriques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Métriques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimisations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tests-unitaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests Unitaires
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-dintegration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests d'Intégration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenarios-de-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scénarios de Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐛 Dépannage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐛 Dépannage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problemes-communs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problèmes Communs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Problèmes Communs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#erreur-module-not-initialized" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erreur : "Module not initialized"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erreur-processing-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erreur : "Processing failed"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Références
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Références">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation-externe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Externe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#articles-ressources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Articles &amp; Ressources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-de-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Notes de Version
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Notes de Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version-110-2025-03-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.1.0 (2025-03-01)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-100-2025-01-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version 1.0.0 (2025-01-01)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Checklist Implémentation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="template-de-documentation-nom-du-module">Template de Documentation - [NOM DU MODULE]</h1>
+<p>!!! info "Statut"
+    <strong>Version</strong> : X.X.X<br />
+<strong>Statut</strong> : <span class="status-badge status-progress">🔄 En développement</span><br />
+<strong>Priorité</strong> : <span class="priority-high">HAUTE</span><br />
+<strong>Responsable</strong> : [Nom]</p>
+<hr />
+<h2 id="vue-densemble">📋 Vue d'Ensemble</h2>
+<h3 id="description-generale">Description Générale</h3>
+<p>[Description claire et concise du module en 2-3 phrases]</p>
+<h3 id="objectifs">Objectifs</h3>
+<ul>
+<li>🎯 <strong>Objectif 1</strong> : Description</li>
+<li>🎯 <strong>Objectif 2</strong> : Description</li>
+<li>🎯 <strong>Objectif 3</strong> : Description</li>
+</ul>
+<h3 id="cas-dusage-principaux">Cas d'Usage Principaux</h3>
+<ol>
+<li><strong>Cas 1</strong> : Description du scénario</li>
+<li><strong>Cas 2</strong> : Description du scénario</li>
+<li><strong>Cas 3</strong> : Description du scénario</li>
+</ol>
+<hr />
+<h2 id="architecture">🏗️ Architecture</h2>
+<h3 id="diagramme-de-composants">Diagramme de Composants</h3>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="DESCRIPTION" height="327px" preserveAspectRatio="xMidYMid meet" style="width:250px;height:327px;background:#003153;" version="1.1" viewBox="0 0 250 327" width="250px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#003153" height="327" style="stroke:none;stroke-width:1;" width="250" x="0" y="0"/><g class="cluster" data-entity="Module Name" data-source-line="4" data-uid="ent0002" id="cluster_Module Name"><path d="M13.5,11 L122.4531,11 A3.75,3.75 0 0 1 124.9531,13.5 L131.9531,33.2969 L174.5,33.2969 A2.5,2.5 0 0 1 177,35.7969 L177,318.39 A2.5,2.5 0 0 1 174.5,320.89 L13.5,320.89 A2.5,2.5 0 0 1 11,318.39 L11,13.5 A2.5,2.5 0 0 1 13.5,11" fill="#003153" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="11" x2="131.9531" y1="33.2969" y2="33.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="107.9531" x="15" y="25.9951">Module Name</text></g><g class="entity" data-entity="C1" data-source-line="5" data-uid="ent0003" id="entity_C1"><rect fill="#003153" height="46.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="134.6367" x="26.68" y="46"/><rect fill="#003153" height="10" style="stroke:#D9D3D0;stroke-width:1;" width="15" x="141.3167" y="51"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="53"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="57"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="41.68" y="78.9951">Component 1</text></g><g class="entity" data-entity="C2" data-source-line="6" data-uid="ent0004" id="entity_C2"><rect fill="#003153" height="46.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="134.6367" x="26.68" y="152.3"/><rect fill="#003153" height="10" style="stroke:#D9D3D0;stroke-width:1;" width="15" x="141.3167" y="157.3"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="159.3"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="163.3"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="41.68" y="185.2951">Component 2</text></g><g class="entity" data-entity="C3" data-source-line="7" data-uid="ent0005" id="entity_C3"><rect fill="#003153" height="46.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="134.6367" x="26.68" y="258.59"/><rect fill="#003153" height="10" style="stroke:#D9D3D0;stroke-width:1;" width="15" x="141.3167" y="263.59"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="265.59"/><rect fill="#003153" height="2" style="stroke:#D9D3D0;stroke-width:1;" width="4" x="139.3167" y="269.59"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="41.68" y="291.5851">Component 3</text></g><g class="entity" data-entity="I1" data-source-line="13" data-uid="ent0008" id="entity_I1"><ellipse cx="205" cy="69.15" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="76.0361" x="166.9819" y="99.1451">Interface 1</text></g><g class="link" data-entity-1="C1" data-entity-2="C2" data-source-line="10" data-uid="lnk6" id="link_C1_C2"><path d="M94,92.78 C94,110.27 94,128.38 94,145.86" fill="none" id="C1-to-C2" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="94,151.86,98,142.86,94,146.86,90,142.86,94,151.86" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="link" data-entity-1="C2" data-entity-2="C3" data-source-line="11" data-uid="lnk7" id="link_C2_C3"><path d="M94,199.08 C94,216.57 94,234.67 94,252.15" fill="none" id="C2-to-C3" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="94,258.15,98,249.15,94,253.15,90,249.15,94,258.15" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="link" data-entity-1="C1" data-entity-2="I1" data-source-line="14" data-uid="lnk9" id="link_C1_I1"><path d="M161.64,69.15 C172.93,69.15 184.22,69.15 195.52,69.15" fill="none" id="C1-I1" style="stroke:#D9D3D0;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title>plantuml.com | 520: Web server is returning an unknown error</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Web server is returning an unknown error</span>
+                <span class="code-label">Error code 520</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2025-11-03 21:58:07 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">Dallas</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">www.plantuml.com</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>There is an unknown connection issue between Cloudflare and the origin web server. As a result, the web page can not be displayed.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    
+                <h3 class="text-15 font-semibold mb-2">If you are a visitor of this website:</h3>
+                <p class="mb-6">Please try again in a few minutes.</p>
+
+                <h3 class="text-15 font-semibold mb-2">If you are the owner of this website:</h3>
+                <p><span>There is an issue between Cloudflare's cache and your origin web server. Cloudflare monitors for these errors and automatically investigates the cause. To help support the investigation, you can pull the corresponding error log from your web server and submit it our support team.  Please include the Ray ID (which is at the bottom of this error page).</span> <a rel="noopener noreferrer" href=   "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/">Additional troubleshooting resources</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">998f218448ba6335</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">52.154.130.211</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html></div></div>
+
+<h3 id="composants-detailles">Composants Détaillés</h3>
+<h4 id="composant-1">Composant 1</h4>
+<p><strong>Responsabilités</strong> :
+- Action 1
+- Action 2</p>
+<p><strong>Dépendances</strong> :
+- Dépendance A
+- Dépendance B</p>
+<p><strong>API</strong> :
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Component1</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">initialize</span><span class="p">();</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">process</span><span class="p">();</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="nf">getData</span><span class="p">();</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">};</span>
+</code></pre></div></p>
+<hr />
+<h2 id="flux-de-fonctionnement">🔄 Flux de Fonctionnement</h2>
+<h3 id="diagramme-de-sequence">Diagramme de Séquence</h3>
+<div class='puml-container'><div class="puml light" style="">400. <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="326px" preserveAspectRatio="none" style="width:864px;height:326px;background:#000000;" version="1.1" viewBox="0 0 864 326" width="864px" zoomAndPan="magnify"><defs/><g><rect fill="#1F2413" height="1" style="stroke:#1F2413;stroke-width:1;" width="1" x="0" y="0"/><rect fill="#FFFFFF" height="205.5625" style="stroke:#FFFFFF;stroke-width:1;" width="862.0996" x="0" y="0"/><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="153.9141" x="5" y="16.1387">Welcome to PlantUML!</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="30.1074">&#160;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="277.1074" x="5" y="44.0762">You can start with a simple UML Diagram like:</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="58.0449">&#160;</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacing" textLength="122.8184" x="5" y="72.0137">Bob-&gt;Alice:&#160;Hello</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="85.9824">&#160;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="14.3789" x="5" y="99.9512">Or</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="113.9199">&#160;</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacing" textLength="93.9199" x="5" y="127.8887">class&#160;Example</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="141.8574">&#160;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="341.9531" x="5" y="155.8262">You will find more information about PlantUML syntax on</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="125.7012" x="350.7676" y="155.8262">https://plantuml.com</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="169.7949">&#160;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="106.6113" x="5" y="183.7637">(Details by typing</text><text fill="#000000" font-family="monospace" font-size="12" lengthAdjust="spacing" textLength="50.5723" x="115.4258" y="183.7637">license</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="55.8223" x="169.8125" y="183.7637">keyword)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="3.8145" x="5" y="197.7324">&#160;</text><image height="71" width="80" x="505.4688" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABHCAMAAACnHDC8AAADAFBMVEX///+BpbvD3u/f7vfPz8+nz+g3ksuZEDkWADr/ujlvsdpTodLCwsOLwOEbg8T//v6pqamZETnLysvT09To5+jqLS4VATj9/f27u7vDw8MTfsK+v7/j4+SOweJprdjL4/KxsbEri8jk8PgXa57c29uUETez1utQoNJ1tNtEmc9cptWBut6ayOW/3O6YEDjY6vUfhcXBwcHs7Ozw9/v83t79uTn7+/vX19ehoaHx8fG2tLXHx8fuVlfrNTYaBjn/vUH5+fmko6WXl5f/+fn95ub+9PT+8PD3qKidmaMxIUrnqDWcFj7n5eX09PTu7u2SkpKfnZ6rq6z0lJTm4tzJrHUfDT339/eFGDn6tjcrEzOvrbBuZ3l4eomSMS7Hz9Smpqasu8SFiYuQETfa2du1m6OOM051J0NWTWL5xse4uLj6zc33r6/4vb7ydHXqLi/72dntTE3tR0ijbn5jW3C+u8NANVQrG0XFubqRVGZza4GQGT2VaS7a0NPJtI6IJj/zszrfqkXXzr/Hw8cgC0LUqltOQ2JsSC5bTGjOpFafSi2+iDGtyt14m7TJhTCPJUSwoIG/qa+ikHiIgpCRHjI9j8KXbnaQH0FLf6FGPlp0cnYyKE2rg49Wj7dFXHmcwtrp6uu+xMjvYWLvW1z97e3sPD3sP0DuUlP709PYzdDPmzqZWWySRVygfHHd1smWkZ+PgnibETqsl260q5fLuppJLC/dpj2HPFLTtHv/ujrTwJy5s6iWjIi0iD3joTTCmU3trjuvZS2zlFvjq0HSyLbYp0qRts10XGxEKC9yPVBQZIOPdlNvMk2NeYNqRlujtcCVrr3j5eY1gK9Qn9GLp7lbeJXRxrCkiZDaozyukoJ+H0B3rc+OYy+iprJkYXdhmr6ee0afs79xq9BikrGKjI3FomEiLFO0ay6nfIm4pZXRjTFuhZSZWm0zcZyJN0KNTk4eebNfdIGGlZ93h5kcED5nOVYyRWbziIk9dJ4kerE5ZYxRUnLG1d7p8PTvY2PtTk/1nZ1ycV/bAAAFx0lEQVR4Xu1Ye1BUVRg/e3dhl4csKyxqPlBJQVETF2icAY13GogkEFqizqRRpoBpTCIapaUOhWNjUdOMSBpqJYZTg4KigFKADzSIVZ4qD5VFluXhLgvbPee+r49R7v2z3+zcc77fOfPb7zvfPd85uwCIhwT4wPisANwPAuIKHnbHH1I+KwAXDA18ShDW58CneCEnXl8JGwmfHylCPSvlZ/FWxh8YIRIxTWkZAEofkTz8sNq7tAqE2gODOB6GYZobVaH20SVZ4oQcdmXV0L7c4b8OFvJHRoYwdVIoyPX3gxtFDA+V8e6mM8pBoCjij4wQiWo/ALzV/kpkifBi13p4waZuGrJEECycixcEVSbYgFwUozg4/qSraOxrP7O8Eogj2HDxyMWmzpk6823+yIjhvR7fLOpDsCuGhwC0WfbkjQq8A0MWC0EgIYzPCYMymM8Iwcvz6K4IWw8skTrgq3iPMIQnxdfKrvyedpyvbSsyBQt6zcH6OxXmjqYxg9PbgXBBveK6aRAXNEl1Ssc+hz7Bgntyohb/ggQlNrrdzfIuoYKSb79067PrRoLmGo25SeghJRn1yMrSbPTptZaoBlwtlWbBHspxiW+mW8+46ereVnMXGxbFQ+mjofiHZTrclJn5E14UEgdrO9tRVph0HDJlYlRsLv4XFA7RBA1kK5ogBb7gtn08AvxWymc2b+YzLHC3nnOCNHvdayUsZpnnwnPqGf+yGKcPKlv92vtJC209zGyRWJmgyd16sSGGT/AmM2rdKZKZHxwCz7KUodLzJOO8th4OBqxdo0c2tfUkNr3QlJkZQWWMBP0uwBHvmQQb3zRVCMnsMO6ATazf3f0kkza0HTaPCdIhpyTknqP61Te1eV2gRpr1FUn4xtxRT72pDHhj09/UnBLjiv72p4d8FEtlLibBd7Qg0xK5+XfS9q2AzxSVHPnNIMBS8BQPw8N1W4glQWj0mtp4+nSHhvKYOM4GL6vH1jGTcDQ3p1979AQPI5agXEDYwuS5awknJ73rHU56RyLAr6ACpO5iMRGvp3XykjImgs4Fgm2/7URc8dhbeD9jdhYVNon0mdFcAjTIXbmC75VrmVHcQ+JDIXbuNmYUYlZoYx6XcWjKTWavYXd1WzU9OEh9wLFfEVFza5PEhVhDAvfLx60cWM3ePMa9hyZG5DNr6DbQiCUcYU0AKGzGyYxlkf+wxnCk+wdwCbA/TkWH7Dbgoq8dcmKNssQQ3F/JmMxlIj/fzo/7s9OIwUMebbYzbh2zLfk7ehBGzIau6OeO+xzGKlBRwCGAXNaCFgYbRoKG+hMTfMff4M6h0LYxpmv/92ym9tIxc4uRzawynCEWGhum7odf9/75vh8zg0bKijX5AMxhMacsK8pBxaJihtnQqr1KG8yFMzq/dutJ2iKwNCbXA7Yamsm2Xn0XtgtowY3Xy8rpYc4NNqon8eM49k+NtzU55GtMleGAkNR6oldDMhH+e9EX0JB+UYKv4WgLZrLCjHV7wnyYlzJZvYV6A6d1w6xEph842UUyTkjGIbzwRA/JIOBJKSt88yglqND1h6TpiQqQV99wmJ7nknQcgIIHqd00EwSzgudigGYQUHE4qFMcGJb22kp7lNop8p6znStvg5S2e1TVRti56w/zj8fZzKLiDa317MqBQFbs+J3dcbSgo+H4D0kLOokJ82/NR8KZbp9eIZgllwKR8Ec1ejIX827POk/06HpYffGd5dkoZJXMqDAVXd1Nbhavlx4OyuAiPcyAF3Ick8faXAuE5WToApkMxykL1PbNRJ91SDkXOyymPFR1UMlw9GjRPKCrPsRSvUnbzbkELj2PSSRkQLiH1AvROTutlpryLHQAoCD+C2BBP4npMwd9zsIgzgaDsK+bctmVw3hetai5t9RS4PEqub4QnCvxteGzOZyQXxjscxkhHisWKMi72+T0p1dxGeGYkG0ez+eeG7In/n/oNOexC9fzIiLvPxVtKp84iza+AAAAAElFTkSuQmCC" y="6"/><rect fill="#000000" height="118.4531" style="stroke:#000000;stroke-width:1;" width="862.0996" x="0" y="205.5625"/><text fill="#33FF02" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="175.2715" x="5" y="222.5625">PlantUML 1.2025.10beta1</text><rect fill="#33FF02" height="21.2969" style="stroke:#33FF02;stroke-width:1;" width="173.2813" x="5" y="232.5313"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="171.2813" x="6" y="247.5313">[From string (line 2) ]</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="4.874" x="5" y="267.8281">&#160;</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="81.4229" x="5" y="284.125">@startuml</text><text fill="#33FF02" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" text-decoration="wavy underline" textLength="852.0996" x="5" y="300.4219">!include https://raw.githubusercontent.com/MikhailKravets/mkdocs_puml/master/themes/default/light.puml</text><text fill="#FF0000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="135.8848" x="9.874" y="316.7188">Cannot open URL</text><!--SRC=[HOx1JiCm44Jl_ehbrXuQDnKWr2CKaDf6L9JqYjnaILQnrv6zJiNVumeXhZjlPjyDSMDJYz2BZ76jTJ2NeYFfqpb538rdGPQYyKvNDFI6x2wO2ILgDxI-YPzZSbOx4mM3bXuTHjtYbqbMjAMkb-8AA7MmXgMkzZ1XYEGPocArNDqLvVACOifPpGFx2qD-D995478uLxFNmnwYJw51Q2bAe7EIt9whhPaCl2U-Scju6v6tcztV0Pvvek3PPNMrFLN_mFtjuf44ZXYo1vmgjVbrpOt6jyJT6kgFbyM3sXlkakdoDh9wydatVEVi-0C0]--></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="358px" preserveAspectRatio="xMidYMid meet" style="width:414px;height:358px;background:#003153;" version="1.1" viewBox="0 0 414 358" width="414px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#003153" height="358" style="stroke:none;stroke-width:1;" width="414" x="0" y="0"/><g><title>Component 1</title><rect fill="#003153" height="145.6641" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="117.2285" y="113.4297"/></g><g><title>Component 2</title><rect fill="#003153" height="87.3984" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="255.8652" y="142.5625"/></g><g><title>Storage</title><rect fill="#003153" height="29.1328" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="374.2002" y="171.6953"/></g><g><title>User</title><rect fill="#000000" fill-opacity="0.00000" height="194.7969" width="8" x="24.9551" y="82.2969"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:5,5;" x1="28" x2="28" y1="82.2969" y2="277.0938"/></g><g><title>Component 1</title><rect fill="#000000" fill-opacity="0.00000" height="194.7969" width="8" x="118.2285" y="82.2969"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:5,5;" x1="121.9102" x2="121.9102" y1="82.2969" y2="277.0938"/></g><g><title>Component 2</title><rect fill="#000000" fill-opacity="0.00000" height="194.7969" width="8" x="256.8652" y="82.2969"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:5,5;" x1="260.5469" x2="260.5469" y1="82.2969" y2="277.0938"/></g><g><title>Storage</title><rect fill="#000000" fill-opacity="0.00000" height="194.7969" width="8" x="375.2002" y="82.2969"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:5,5;" x1="378.812" x2="378.812" y1="82.2969" y2="277.0938"/></g><g class="participant participant-head" data-participant="User"><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="10" y="78.9951">User</text><ellipse cx="28.9551" cy="14" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1;"/><path d="M28.9551,22 L28.9551,49 M15.9551,30 L41.9551,30 M28.9551,49 L15.9551,64 M28.9551,49 L41.9551,64" fill="none" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="participant participant-tail" data-participant="User"><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="31.9102" x="10" y="289.0889">User</text><ellipse cx="28.9551" cy="301.3906" fill="#003153" rx="8" ry="8" style="stroke:#D9D3D0;stroke-width:1;"/><path d="M28.9551,309.3906 L28.9551,336.3906 M15.9551,317.3906 L41.9551,317.3906 M28.9551,336.3906 L15.9551,351.3906 M28.9551,336.3906 L41.9551,351.3906" fill="none" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="participant participant-head" data-participant="C1"><rect fill="#003153" height="30.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="108.6367" x="67.9102" y="51"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="74.9102" y="70.9951">Component 1</text></g><g class="participant participant-tail" data-participant="C1"><rect fill="#003153" height="30.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="108.6367" x="67.9102" y="276.0938"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="74.9102" y="296.0889">Component 1</text></g><g class="participant participant-head" data-participant="C2"><rect fill="#003153" height="30.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="108.6367" x="206.5469" y="51"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="213.5469" y="70.9951">Component 2</text></g><g class="participant participant-tail" data-participant="C2"><rect fill="#003153" height="30.2969" rx="2.5" ry="2.5" style="stroke:#D9D3D0;stroke-width:1;" width="108.6367" x="206.5469" y="276.0938"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="94.6367" x="213.5469" y="296.0889">Component 2</text></g><g class="participant participant-head" data-participant="DB"><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="54.7764" x="348.812" y="78.9951">Storage</text><path d="M361.2002,30 C361.2002,20 379.2002,20 379.2002,20 C379.2002,20 397.2002,20 397.2002,30 L397.2002,56 C397.2002,66 379.2002,66 379.2002,66 C379.2002,66 361.2002,66 361.2002,56 L361.2002,30" fill="#003153" style="stroke:#D9D3D0;stroke-width:1;"/><path d="M361.2002,30 C361.2002,40 379.2002,40 379.2002,40 C379.2002,40 397.2002,40 397.2002,30" fill="none" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="participant participant-tail" data-participant="DB"><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="54.7764" x="348.812" y="289.0889">Storage</text><path d="M361.2002,302.3906 C361.2002,292.3906 379.2002,292.3906 379.2002,292.3906 C379.2002,292.3906 397.2002,292.3906 397.2002,302.3906 L397.2002,328.3906 C397.2002,338.3906 379.2002,338.3906 379.2002,338.3906 C379.2002,338.3906 361.2002,338.3906 361.2002,328.3906 L361.2002,302.3906" fill="#003153" style="stroke:#D9D3D0;stroke-width:1;"/><path d="M361.2002,302.3906 C361.2002,312.3906 379.2002,312.3906 379.2002,312.3906 C379.2002,312.3906 397.2002,312.3906 397.2002,302.3906" fill="none" style="stroke:#D9D3D0;stroke-width:1;"/></g><g><title>Component 1</title><rect fill="#003153" height="145.6641" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="117.2285" y="113.4297"/></g><g><title>Component 2</title><rect fill="#003153" height="87.3984" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="255.8652" y="142.5625"/></g><g><title>Storage</title><rect fill="#003153" height="29.1328" style="stroke:#D9D3D0;stroke-width:1;" width="10" x="374.2002" y="171.6953"/></g><g class="message" data-participant-1="User" data-participant-2="C1"><polygon fill="#D9D3D0" points="105.2285,109.4297,115.2285,113.4297,105.2285,117.4297,109.2285,113.4297" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="28.9551" x2="111.2285" y1="113.4297" y2="113.4297"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="40.9424" x="35.9551" y="108.3638">Action</text></g><g class="message" data-participant-1="C1" data-participant-2="C2"><polygon fill="#D9D3D0" points="243.8652,138.5625,253.8652,142.5625,243.8652,146.5625,247.8652,142.5625" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="127.2285" x2="249.8652" y1="142.5625" y2="142.5625"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="49.8291" x="134.2285" y="137.4966">Process</text></g><g class="message" data-participant-1="C2" data-participant-2="DB"><polygon fill="#D9D3D0" points="362.2002,167.6953,372.2002,171.6953,362.2002,175.6953,366.2002,171.6953" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="265.8652" x2="368.2002" y1="171.6953" y2="171.6953"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="34.6455" x="272.8652" y="166.6294">Store</text></g><g class="message" data-participant-1="DB" data-participant-2="C2"><polygon fill="#D9D3D0" points="276.8652,196.8281,266.8652,200.8281,276.8652,204.8281,272.8652,200.8281" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:2,2;" x1="270.8652" x2="378.2002" y1="200.8281" y2="200.8281"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="84.335" x="282.8652" y="195.7622">Confirmation</text></g><g class="message" data-participant-1="C2" data-participant-2="C1"><polygon fill="#D9D3D0" points="138.2285,225.9609,128.2285,229.9609,138.2285,233.9609,134.2285,229.9609" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:2,2;" x1="132.2285" x2="259.8652" y1="229.9609" y2="229.9609"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="40.752" x="144.2285" y="224.895">Result</text></g><g class="message" data-participant-1="C1" data-participant-2="User"><polygon fill="#D9D3D0" points="39.9551,255.0938,29.9551,259.0938,39.9551,263.0938,35.9551,259.0938" style="stroke:#D9D3D0;stroke-width:1;"/><line style="stroke:#D9D3D0;stroke-width:1;stroke-dasharray:2,2;" x1="33.9551" x2="121.2285" y1="259.0938" y2="259.0938"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="63.0195" x="45.9551" y="254.0278">Response</text></g></g></svg></div></div>
+
+<h3 id="etapes-detaillees">Étapes Détaillées</h3>
+<ol>
+<li><strong>Initialisation</strong></li>
+<li>Description de l'étape</li>
+<li>
+<p>Code exemple si nécessaire</p>
+</li>
+<li>
+<p><strong>Traitement Principal</strong></p>
+</li>
+<li>Description de l'étape</li>
+<li>
+<p>Code exemple si nécessaire</p>
+</li>
+<li>
+<p><strong>Finalisation</strong></p>
+</li>
+<li>Description de l'étape</li>
+<li>Code exemple si nécessaire</li>
+</ol>
+<hr />
+<h2 id="diagrammes-detat">📊 Diagrammes d'État</h2>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="STATE" height="501px" preserveAspectRatio="xMidYMid meet" style="width:198px;height:501px;background:#003153;" version="1.1" viewBox="0 0 198 501" width="198px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#003153" height="501" style="stroke:none;stroke-width:1;" width="198" x="0" y="0"/><ellipse cx="95.98" cy="21" fill="#003153" rx="10" ry="10" style="stroke:#D9D3D0;stroke-width:1;"/><g id="State1"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="63" y="92"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="63" x2="128.9648" y1="118.2969" y2="118.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="73" y="109.9951">State1</text></g><g id="State2"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="12" y="219"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="12" x2="77.9648" y1="245.2969" y2="245.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="22" y="236.9951">State2</text></g><g id="State3"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="63" y="346"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="63" x2="128.9648" y1="372.2969" y2="372.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="73" y="363.9951">State3</text></g><ellipse cx="95.98" cy="484" fill="none" rx="11" ry="11" style="stroke:#D9D3D0;stroke-width:1;"/><ellipse cx="95.98" cy="484" fill="#003153" rx="6" ry="6" style="stroke:#D9D3D0;stroke-width:1;"/><g class="link" data-entity-1=".start." data-entity-2="State1" data-source-line="4" data-uid="lnk4" id="link_.start._State1"><path d="M95.98,31.36 C95.98,45.29 95.98,65.95 95.98,85.65" fill="none" id="*start*-to-State1" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="95.98,91.65,99.98,82.65,95.98,86.65,91.98,82.65,95.98,91.65" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="link" data-entity-1="State1" data-entity-2="State2" data-source-line="6" data-uid="lnk6" id="link_State1_State2"><path d="M83.5,142.47 C79.01,151.63 74.05,162.2 69.98,172 C63.62,187.33 59.3135,199.23 54.6835,213.07" fill="none" id="State1-to-State2" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="52.78,218.76,59.4287,211.494,54.3663,214.0183,51.8419,208.9559,52.78,218.76" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.2671" x="70.98" y="185.0669">Event A</text></g><g class="link" data-entity-1="State2" data-entity-2="State3" data-source-line="7" data-uid="lnk8" id="link_State2_State3"><path d="M52.78,269.24 C57.41,283.08 63.62,300.67 69.98,316 C74.05,325.8 76.3691,330.9824 80.8591,340.1424" fill="none" id="State2-to-State3" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="83.5,345.53,83.1304,335.6881,81.2993,341.0404,75.947,339.2092,83.5,345.53" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.2925" x="70.98" y="312.0669">Event B</text></g><g class="link" data-entity-1="State3" data-entity-2="State1" data-source-line="8" data-uid="lnk9" id="link_State3_State1"><path d="M112.99,345.58 C118.23,336.68 123.32,326.28 125.98,316 C142.04,254.05 142.04,233.95 125.98,172 C123.32,161.72 121.2742,156.4904 116.0342,147.5904" fill="none" id="State3-to-State1" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="112.99,142.42,114.1093,152.205,115.5268,146.7287,121.0032,148.1462,112.99,142.42" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.4512" x="139.98" y="248.5669">Event C</text></g><g class="link" data-entity-1="State3" data-entity-2=".end." data-source-line="9" data-uid="lnk11" id="link_State3_.end."><path d="M95.98,396.36 C95.98,420.23 95.98,449.46 95.98,466.71" fill="none" id="State3-to-*end*" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="95.98,472.71,99.98,463.71,95.98,467.71,91.98,463.71,95.98,472.71" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="62.6514" x="96.98" y="439.0669">Complete</text></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="STATE" height="501px" preserveAspectRatio="xMidYMid meet" style="width:198px;height:501px;background:#003153;" version="1.1" viewBox="0 0 198 501" width="198px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#003153" height="501" style="stroke:none;stroke-width:1;" width="198" x="0" y="0"/><ellipse cx="95.98" cy="21" fill="#003153" rx="10" ry="10" style="stroke:#D9D3D0;stroke-width:1;"/><g id="State1"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="63" y="92"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="63" x2="128.9648" y1="118.2969" y2="118.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="73" y="109.9951">State1</text></g><g id="State2"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="12" y="219"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="12" x2="77.9648" y1="245.2969" y2="245.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="22" y="236.9951">State2</text></g><g id="State3"><rect fill="#003153" height="50" rx="12.5" ry="12.5" style="stroke:#D9D3D0;stroke-width:1;" width="65.9648" x="63" y="346"/><line style="stroke:#D9D3D0;stroke-width:1;" x1="63" x2="128.9648" y1="372.2969" y2="372.2969"/><text fill="#D9D3D0" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="45.9648" x="73" y="363.9951">State3</text></g><ellipse cx="95.98" cy="484" fill="none" rx="11" ry="11" style="stroke:#D9D3D0;stroke-width:1;"/><ellipse cx="95.98" cy="484" fill="#003153" rx="6" ry="6" style="stroke:#D9D3D0;stroke-width:1;"/><g class="link" data-entity-1=".start." data-entity-2="State1" data-source-line="4" data-uid="lnk4" id="link_.start._State1"><path d="M95.98,31.36 C95.98,45.29 95.98,65.95 95.98,85.65" fill="none" id="*start*-to-State1" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="95.98,91.65,99.98,82.65,95.98,86.65,91.98,82.65,95.98,91.65" style="stroke:#D9D3D0;stroke-width:1;"/></g><g class="link" data-entity-1="State1" data-entity-2="State2" data-source-line="6" data-uid="lnk6" id="link_State1_State2"><path d="M83.5,142.47 C79.01,151.63 74.05,162.2 69.98,172 C63.62,187.33 59.3135,199.23 54.6835,213.07" fill="none" id="State1-to-State2" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="52.78,218.76,59.4287,211.494,54.3663,214.0183,51.8419,208.9559,52.78,218.76" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.2671" x="70.98" y="185.0669">Event A</text></g><g class="link" data-entity-1="State2" data-entity-2="State3" data-source-line="7" data-uid="lnk8" id="link_State2_State3"><path d="M52.78,269.24 C57.41,283.08 63.62,300.67 69.98,316 C74.05,325.8 76.3691,330.9824 80.8591,340.1424" fill="none" id="State2-to-State3" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="83.5,345.53,83.1304,335.6881,81.2993,341.0404,75.947,339.2092,83.5,345.53" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.2925" x="70.98" y="312.0669">Event B</text></g><g class="link" data-entity-1="State3" data-entity-2="State1" data-source-line="8" data-uid="lnk9" id="link_State3_State1"><path d="M112.99,345.58 C118.23,336.68 123.32,326.28 125.98,316 C142.04,254.05 142.04,233.95 125.98,172 C123.32,161.72 121.2742,156.4904 116.0342,147.5904" fill="none" id="State3-to-State1" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="112.99,142.42,114.1093,152.205,115.5268,146.7287,121.0032,148.1462,112.99,142.42" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="50.4512" x="139.98" y="248.5669">Event C</text></g><g class="link" data-entity-1="State3" data-entity-2=".end." data-source-line="9" data-uid="lnk11" id="link_State3_.end."><path d="M95.98,396.36 C95.98,420.23 95.98,449.46 95.98,466.71" fill="none" id="State3-to-*end*" style="stroke:#D9D3D0;stroke-width:1;"/><polygon fill="#D9D3D0" points="95.98,472.71,99.98,463.71,95.98,467.71,91.98,463.71,95.98,472.71" style="stroke:#D9D3D0;stroke-width:1;"/><text fill="#D9D3D0" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="62.6514" x="96.98" y="439.0669">Complete</text></g></g></svg></div></div>
+
+<hr />
+<h2 id="implementation">💻 Implémentation</h2>
+<h3 id="structure-de-fichiers">Structure de Fichiers</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>module-name/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── include/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── ModuleName.h
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   └── Components/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│       ├── Component1.h
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│       └── Component2.h
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── src/
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── ModuleName.cpp
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   └── Components/
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│       ├── Component1.cpp
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│       └── Component2.cpp
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>└── test/
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    ├── test_component1.cpp
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    └── test_component2.cpp
+</code></pre></div>
+<h3 id="classes-principales">Classes Principales</h3>
+<h4 id="classe-modulename">Classe ModuleName</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/**</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * @brief Description de la classe</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> * </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> * Description détaillée du rôle et fonctionnement</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm"> */</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">ModuleName</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1">// Attributs privés</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">attribute1</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">attribute2</span><span class="p">;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="cm">     * @brief Constructeur</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="cm">     */</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="n">ModuleName</span><span class="p">();</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="cm">     * @brief Initialiser le module</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="cm">     * @return true si succès, false sinon</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="cm">     */</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">initialize</span><span class="p">();</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="cm">     * @brief Traiter les données</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="cm">     * @param data Données en entrée</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="cm">     * @return Résultat du traitement</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="cm">     */</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="n">ResultType</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DataType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="cm">     * @brief Obtenir l&#39;état actuel</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="cm">     * @return État du module</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="cm">     */</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="n">StateType</span><span class="w"> </span><span class="nf">getState</span><span class="p">();</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="p">};</span>
+</code></pre></div>
+<h3 id="exemples-de-code">Exemples de Code</h3>
+<h4 id="exemple-1-initialisation">Exemple 1 : Initialisation</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Créer instance</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">ModuleName</span><span class="w"> </span><span class="k">module</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Initialiser</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="k">module</span><span class="p">.</span><span class="n">initialize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Erreur initialisation&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Module prêt&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="exemple-2-utilisation">Exemple 2 : Utilisation</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Préparer données</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">DataType</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prepareData</span><span class="p">();</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">// Traiter</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">ResultType</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// Vérifier résultat</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">isValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Résultat : &quot;</span><span class="p">);</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">getValue</span><span class="p">());</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="api-interfaces">🔌 API &amp; Interfaces</h2>
+<h3 id="api-publique">API Publique</h3>
+<h4 id="fonctions-principales">Fonctions Principales</h4>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Paramètres</th>
+<th>Retour</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initialize()</code></td>
+<td>Aucun</td>
+<td><code>bool</code></td>
+<td>Initialise le module</td>
+</tr>
+<tr>
+<td><code>process(data)</code></td>
+<td><code>DataType</code></td>
+<td><code>ResultType</code></td>
+<td>Traite les données</td>
+</tr>
+<tr>
+<td><code>getState()</code></td>
+<td>Aucun</td>
+<td><code>StateType</code></td>
+<td>Retourne l'état</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callbacks">Callbacks</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Définir callback</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">DataCallback</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="n">DataType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// Enregistrer callback</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">module</span><span class="p">.</span><span class="n">setDataCallback</span><span class="p">([](</span><span class="k">const</span><span class="w"> </span><span class="n">DataType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="c1">// Traitement callback</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">});</span>
+</code></pre></div>
+<h3 id="format-des-messages">Format des Messages</h3>
+<h4 id="message-entree">Message Entrée</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;process&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">&quot;field1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">&quot;field2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698765432</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="message-sortie">Message Sortie</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;response&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">&quot;field1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;result1&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nt">&quot;field2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1698765433</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="configuration">⚙️ Configuration</h2>
+<h3 id="parametres">Paramètres</h3>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Type</th>
+<th>Défaut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PARAM_1</code></td>
+<td><code>int</code></td>
+<td>100</td>
+<td>Description paramètre 1</td>
+</tr>
+<tr>
+<td><code>PARAM_2</code></td>
+<td><code>bool</code></td>
+<td>true</td>
+<td>Description paramètre 2</td>
+</tr>
+<tr>
+<td><code>PARAM_3</code></td>
+<td><code>float</code></td>
+<td>1.5</td>
+<td>Description paramètre 3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichier-de-configuration">Fichier de Configuration</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Configuration Module</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">[general]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="na">debug_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="k">[parameters]</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="na">param1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">100</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="na">param2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="na">param3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.5</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">[network]</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="na">timeout_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="na">retry_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3</span>
+</code></pre></div>
+<hr />
+<h2 id="performance">📈 Performance</h2>
+<h3 id="metriques">Métriques</h3>
+<table>
+<thead>
+<tr>
+<th>Métrique</th>
+<th>Valeur Cible</th>
+<th>Valeur Actuelle</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latence</td>
+<td>&lt; 50ms</td>
+<td>35ms</td>
+<td>✅ OK</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>&gt; 100 msg/s</td>
+<td>120 msg/s</td>
+<td>✅ OK</td>
+</tr>
+<tr>
+<td>Mémoire</td>
+<td>&lt; 10KB</td>
+<td>8KB</td>
+<td>✅ OK</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>&lt; 20%</td>
+<td>15%</td>
+<td>✅ OK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optimisations">Optimisations</h3>
+<p>!!! tip "Optimisation 1"
+    Description de l'optimisation et son impact</p>
+<p>!!! tip "Optimisation 2"
+    Description de l'optimisation et son impact</p>
+<hr />
+<h2 id="tests">🧪 Tests</h2>
+<h3 id="tests-unitaires">Tests Unitaires</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// test_module.cpp</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Initialization&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[module]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">ModuleName</span><span class="w"> </span><span class="k">module</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="k">module</span><span class="p">.</span><span class="n">initialize</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Processing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[module]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="n">ModuleName</span><span class="w"> </span><span class="k">module</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="k">module</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="n">DataType</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createTestData</span><span class="p">();</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="n">ResultType</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">module</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">isValid</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="n">REQUIRE</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">getValue</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EXPECTED_VALUE</span><span class="p">);</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="tests-dintegration">Tests d'Intégration</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">TEST_CASE</span><span class="p">(</span><span class="s">&quot;Integration with Component2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[integration]&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">ModuleName</span><span class="w"> </span><span class="k">module</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">Component2</span><span class="w"> </span><span class="n">component</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="k">module</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">component</span><span class="p">.</span><span class="n">initialize</span><span class="p">();</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="c1">// Test interaction</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="scenarios-de-test">Scénarios de Test</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scénario</th>
+<th>Entrée</th>
+<th>Sortie Attendue</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Init normale</td>
+<td>-</td>
+<td>Success</td>
+<td>✅ Pass</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Process valide</td>
+<td>Valid data</td>
+<td>Valid result</td>
+<td>✅ Pass</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Process invalide</td>
+<td>Invalid data</td>
+<td>Error</td>
+<td>✅ Pass</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Stress test</td>
+<td>1000 msg/s</td>
+<td>No crash</td>
+<td>🟡 Pending</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="depannage">🐛 Dépannage</h2>
+<h3 id="problemes-communs">Problèmes Communs</h3>
+<h4 id="erreur-module-not-initialized">Erreur : "Module not initialized"</h4>
+<p><strong>Symptômes</strong> :
+- Message d'erreur au démarrage
+- Fonctionnalités non disponibles</p>
+<p><strong>Causes Possibles</strong> :
+- Oubli d'appeler <code>initialize()</code>
+- Dépendances non satisfaites</p>
+<p><strong>Solution</strong> :
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Vérifier initialisation</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="k">module</span><span class="p">.</span><span class="n">initialize</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Vérifier dépendances&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="c1">// Traiter erreur</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">}</span>
+</code></pre></div></p>
+<h4 id="erreur-processing-failed">Erreur : "Processing failed"</h4>
+<p><strong>Symptômes</strong> :
+- Résultats incorrects
+- Exceptions lancées</p>
+<p><strong>Causes Possibles</strong> :
+- Données invalides
+- État incorrect</p>
+<p><strong>Solution</strong> :
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Valider données avant traitement</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">data</span><span class="p">.</span><span class="n">isValid</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Données invalides&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="references">📚 Références</h2>
+<h3 id="documentation-externe">Documentation Externe</h3>
+<ul>
+<li><a href="https://example.com">Lien documentation 1</a></li>
+<li><a href="https://example.com">Lien documentation 2</a></li>
+</ul>
+<h3 id="articles-ressources">Articles &amp; Ressources</h3>
+<ul>
+<li>Article 1 : Titre et lien</li>
+<li>Article 2 : Titre et lien</li>
+</ul>
+<hr />
+<h2 id="notes-de-version">📝 Notes de Version</h2>
+<h3 id="version-110-2025-03-01">Version 1.1.0 (2025-03-01)</h3>
+<p>✨ <strong>Nouvelles Fonctionnalités</strong>
+- Feature A ajoutée
+- Feature B ajoutée</p>
+<p>🐛 <strong>Corrections</strong>
+- Bug X corrigé
+- Bug Y corrigé</p>
+<p>⚡ <strong>Améliorations</strong>
+- Performance +20%
+- Mémoire -15%</p>
+<h3 id="version-100-2025-01-01">Version 1.0.0 (2025-01-01)</h3>
+<p>🎉 <strong>Version Initiale</strong>
+- Fonctionnalités de base implémentées</p>
+<hr />
+<h2 id="checklist-implementation">✅ Checklist Implémentation</h2>
+<ul>
+<li>[ ] Architecture définie</li>
+<li>[ ] Classes principales codées</li>
+<li>[ ] Tests unitaires écrits</li>
+<li>[ ] Tests d'intégration passés</li>
+<li>[ ] Documentation API complète</li>
+<li>[ ] Exemples de code fournis</li>
+<li>[ ] Performance validée</li>
+<li>[ ] Revue de code effectuée</li>
+<li>[ ] Déploiement en production</li>
+</ul>
+<hr />
+<div style="text-align: center; margin-top: 50px;">
+  <p><em>Dernière mise à jour : {{ git_revision_date_localized }}</em></p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,911 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation complète du système de chronométrage et positionnement UWB DW3000">
+      
+      
+        <meta name="author" content="Hugo">
+      
+      
+      
+      
+        <link rel="next" href="global/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Système de Positionnement UWB pour Voitures RC</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#systeme-de-positionnement-uwb-pour-voitures-rc" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="." title="Système de Positionnement UWB pour Voitures RC" class="md-header__button md-logo" aria-label="Système de Positionnement UWB pour Voitures RC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Système de Positionnement UWB pour Voitures RC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Accueil
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="global/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Vue Globale
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Système de Positionnement UWB pour Voitures RC" class="md-nav__button md-logo" aria-label="Système de Positionnement UWB pour Voitures RC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Système de Positionnement UWB pour Voitures RC
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Accueil
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accueil
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Système
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag-uwb-module-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag UWB (Module Mobile)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-uwb-point-fixe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anchor UWB (Point Fixe)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#station-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Station de Base
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flux-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flux de Communication
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="global/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vue Globale
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-systeme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Système
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag-uwb-module-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tag UWB (Module Mobile)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-uwb-point-fixe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anchor UWB (Point Fixe)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#station-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      Station de Base
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flux-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flux de Communication
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="systeme-de-positionnement-uwb-pour-voitures-rc">Système de Positionnement UWB pour Voitures RC</h1>
+<p>Ce projet implémente un système complet de positionnement en temps réel et de chronométrage pour voitures RC, basé sur la technologie <strong>Ultra-Wideband (UWB)</strong> avec les modules <strong>DW3000</strong>.</p>
+<h2 id="architecture-systeme">Architecture Système</h2>
+<p>Le système se compose de trois composants principaux qui travaillent en synergie :</p>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="342px" preserveAspectRatio="xMidYMid meet" style="width:933px;height:342px;" version="1.1" viewBox="0 0 933 342" width="933px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="cluster" data-entity="Tags" data-source-line="8" data-uid="ent0002" id="cluster_Tags"><rect fill="#ADD8E6" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="221" x="12" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="189.9502" x="23" y="34.9951">Tags UWB (Voitures RC)</text></g><g class="cluster" data-entity="Anchors" data-source-line="18" data-uid="ent0004" id="cluster_Anchors"><rect fill="#90EE90" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="251" x="273" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="219.7139" x="284" y="34.9951">Anchors UWB (Points Fixes)</text></g><g class="cluster" data-entity="Base" data-source-line="28" data-uid="ent0006" id="cluster_Base"><rect fill="#FFB6C1" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="266" x="564" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124.5098" x="575" y="34.9951">Station de Base</text></g><g class="entity" data-entity="compTag" data-source-line="9" data-uid="ent0003" id="entity_compTag"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="151.6094" x="37.2" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="115.6094" x="55.2" y="101.9951">Module DW3000</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="43.9893" x="55.2" y="118.292">ESP32</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="82.6465" x="55.2" y="134.5889">Écran OLED</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="90.5762" x="55.2" y="150.8857">Récepteur IR</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="29.6748" x="55.2" y="167.1826">WiFi</text></g><g class="entity" data-entity="compAnchor" data-source-line="19" data-uid="ent0005" id="entity_compAnchor"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="151.6094" x="305.2" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="115.6094" x="323.2" y="101.9951">Module DW3000</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="43.9893" x="323.2" y="118.292">ESP32</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="82.6465" x="323.2" y="134.5889">Écran OLED</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="83.624" x="323.2" y="150.8857">Émetteur IR</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="29.6748" x="323.2" y="167.1826">WiFi</text></g><g class="entity" data-entity="compBase" data-source-line="29" data-uid="ent0007" id="entity_compBase"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="198.9346" x="587.53" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="99.0391" x="605.53" y="101.9951">Interface User</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="88.9424" x="605.53" y="118.292">Stockage SD</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="123.4092" x="605.53" y="134.5889">Gestionnaire WiFi</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="162.9346" x="605.53" y="150.8857">Moteur Positionnement</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="112.0479" x="605.53" y="167.1826">Interface Config</text></g><g class="entity" data-entity="GMN8" data-source-line="47" data-uid="ent0009" id="entity_GMN8"><path d="M111.53,248.49 L111.53,335.0213 L336.4651,335.0213 L336.4651,258.49 L326.4651,248.49 L111.53,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M326.4651,248.49 L326.4651,258.49 L336.4651,258.49 L326.4651,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="187.9351" x="125.53" y="273.5569">• Mesure des distances UWB</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="156.8379" x="125.53" y="288.6897">• Détection IR passages</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="171.6914" x="125.53" y="303.8225">• Transmission temps réel</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="107.4849" x="125.53" y="318.9553">• Affichage local</text></g><g class="entity" data-entity="GMN11" data-source-line="54" data-uid="ent0012" id="entity_GMN11"><path d="M399.54,248.49 L399.54,335.0213 L600.4682,335.0213 L600.4682,258.49 L590.4682,248.49 L399.54,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M590.4682,248.49 L590.4682,258.49 L600.4682,258.49 L590.4682,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="159.7134" x="413.54" y="273.5569">• Point de référence fixe</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="163.9282" x="413.54" y="288.6897">• Auto-calibration réseau</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="137.3252" x="413.54" y="303.8225">• Balise IR (secteurs)</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="139.2485" x="413.54" y="318.9553">• Maillage coordonné</text></g><g class="entity" data-entity="GMN14" data-source-line="61" data-uid="ent0015" id="entity_GMN14"><path d="M717.82,248.49 L717.82,335.0213 L926.1813,335.0213 L926.1813,258.49 L916.1813,248.49 L717.82,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M916.1813,248.49 L916.1813,258.49 L926.1813,258.49 L916.1813,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="113.8516" x="731.82" y="273.5569">• Calcul positions</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="144.0029" x="731.82" y="288.6897">• Interface temps réel</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="131.5806" x="731.82" y="303.8225">• Stockage données</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="171.3613" x="731.82" y="318.9553">• Télécommande système</text></g><g class="link" data-entity-1="Tags" data-entity-2="GMN8" data-source-line="47" data-uid="lnk10" id="link_Tags_GMN8"><path d="M224,212.5518 C224,212.7484 224,212.9449 224,213.1414 C224,213.5344 224,213.9273 224,214.3201 C224,215.1058 224,215.8909 224,216.6754 C224,218.2442 224,219.8101 224,221.3707 C224,224.4917 224,227.5914 224,230.6507 C224,236.7692 224,242.7263 224,248.37" fill="none" id="Tags-GMN8" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g><g class="link" data-entity-1="Anchors" data-entity-2="GMN11" data-source-line="54" data-uid="lnk13" id="link_Anchors_GMN11"><path d="M500,212.5518 C500,212.7484 500,212.9449 500,213.1414 C500,213.5344 500,213.9273 500,214.3201 C500,215.1058 500,215.8909 500,216.6754 C500,218.2442 500,219.8101 500,221.3707 C500,224.4917 500,227.5914 500,230.6507 C500,236.7692 500,242.7263 500,248.37" fill="none" id="Anchors-GMN11" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g><g class="link" data-entity-1="Base" data-entity-2="GMN14" data-source-line="61" data-uid="lnk16" id="link_Base_GMN14"><path d="M822,212.5518 C822,212.7484 822,212.9449 822,213.1414 C822,213.5344 822,213.9273 822,214.3201 C822,215.1058 822,215.8909 822,216.6754 C822,218.2442 822,219.8101 822,221.3707 C822,224.4917 822,227.5914 822,230.6507 C822,236.7692 822,242.7263 822,248.37" fill="none" id="Base-GMN14" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="342px" preserveAspectRatio="xMidYMid meet" style="width:933px;height:342px;" version="1.1" viewBox="0 0 933 342" width="933px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="cluster" data-entity="Tags" data-source-line="8" data-uid="ent0002" id="cluster_Tags"><rect fill="#ADD8E6" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="221" x="12" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="189.9502" x="23" y="34.9951">Tags UWB (Voitures RC)</text></g><g class="cluster" data-entity="Anchors" data-source-line="18" data-uid="ent0004" id="cluster_Anchors"><rect fill="#90EE90" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="251" x="273" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="219.7139" x="284" y="34.9951">Anchors UWB (Points Fixes)</text></g><g class="cluster" data-entity="Base" data-source-line="28" data-uid="ent0006" id="cluster_Base"><rect fill="#FFB6C1" height="200.49" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="266" x="564" y="12"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124.5098" x="575" y="34.9951">Station de Base</text></g><g class="entity" data-entity="compTag" data-source-line="9" data-uid="ent0003" id="entity_compTag"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="151.6094" x="37.2" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="115.6094" x="55.2" y="101.9951">Module DW3000</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="43.9893" x="55.2" y="118.292">ESP32</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="82.6465" x="55.2" y="134.5889">Écran OLED</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="90.5762" x="55.2" y="150.8857">Récepteur IR</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="29.6748" x="55.2" y="167.1826">WiFi</text></g><g class="entity" data-entity="compAnchor" data-source-line="19" data-uid="ent0005" id="entity_compAnchor"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="151.6094" x="305.2" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="115.6094" x="323.2" y="101.9951">Module DW3000</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="43.9893" x="323.2" y="118.292">ESP32</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="82.6465" x="323.2" y="134.5889">Écran OLED</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="83.624" x="323.2" y="150.8857">Émetteur IR</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="29.6748" x="323.2" y="167.1826">WiFi</text></g><g class="entity" data-entity="compBase" data-source-line="29" data-uid="ent0007" id="entity_compBase"><rect fill="#FFFFFF" height="117.4844" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1;" width="198.9346" x="587.53" y="71"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="99.0391" x="605.53" y="101.9951">Interface User</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="88.9424" x="605.53" y="118.292">Stockage SD</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="123.4092" x="605.53" y="134.5889">Gestionnaire WiFi</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="162.9346" x="605.53" y="150.8857">Moteur Positionnement</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="112.0479" x="605.53" y="167.1826">Interface Config</text></g><g class="entity" data-entity="GMN8" data-source-line="47" data-uid="ent0009" id="entity_GMN8"><path d="M111.53,248.49 L111.53,335.0213 L336.4651,335.0213 L336.4651,258.49 L326.4651,248.49 L111.53,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M326.4651,248.49 L326.4651,258.49 L336.4651,258.49 L326.4651,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="187.9351" x="125.53" y="273.5569">• Mesure des distances UWB</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="156.8379" x="125.53" y="288.6897">• Détection IR passages</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="171.6914" x="125.53" y="303.8225">• Transmission temps réel</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="107.4849" x="125.53" y="318.9553">• Affichage local</text></g><g class="entity" data-entity="GMN11" data-source-line="54" data-uid="ent0012" id="entity_GMN11"><path d="M399.54,248.49 L399.54,335.0213 L600.4682,335.0213 L600.4682,258.49 L590.4682,248.49 L399.54,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M590.4682,248.49 L590.4682,258.49 L600.4682,258.49 L590.4682,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="159.7134" x="413.54" y="273.5569">• Point de référence fixe</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="163.9282" x="413.54" y="288.6897">• Auto-calibration réseau</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="137.3252" x="413.54" y="303.8225">• Balise IR (secteurs)</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="139.2485" x="413.54" y="318.9553">• Maillage coordonné</text></g><g class="entity" data-entity="GMN14" data-source-line="61" data-uid="ent0015" id="entity_GMN14"><path d="M717.82,248.49 L717.82,335.0213 L926.1813,335.0213 L926.1813,258.49 L916.1813,248.49 L717.82,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><path d="M916.1813,248.49 L916.1813,258.49 L926.1813,258.49 L916.1813,248.49" fill="#FFFFFF" style="stroke:#000000;stroke-width:1;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="113.8516" x="731.82" y="273.5569">• Calcul positions</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="144.0029" x="731.82" y="288.6897">• Interface temps réel</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="131.5806" x="731.82" y="303.8225">• Stockage données</text><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="171.3613" x="731.82" y="318.9553">• Télécommande système</text></g><g class="link" data-entity-1="Tags" data-entity-2="GMN8" data-source-line="47" data-uid="lnk10" id="link_Tags_GMN8"><path d="M224,212.5518 C224,212.7484 224,212.9449 224,213.1414 C224,213.5344 224,213.9273 224,214.3201 C224,215.1058 224,215.8909 224,216.6754 C224,218.2442 224,219.8101 224,221.3707 C224,224.4917 224,227.5914 224,230.6507 C224,236.7692 224,242.7263 224,248.37" fill="none" id="Tags-GMN8" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g><g class="link" data-entity-1="Anchors" data-entity-2="GMN11" data-source-line="54" data-uid="lnk13" id="link_Anchors_GMN11"><path d="M500,212.5518 C500,212.7484 500,212.9449 500,213.1414 C500,213.5344 500,213.9273 500,214.3201 C500,215.1058 500,215.8909 500,216.6754 C500,218.2442 500,219.8101 500,221.3707 C500,224.4917 500,227.5914 500,230.6507 C500,236.7692 500,242.7263 500,248.37" fill="none" id="Anchors-GMN11" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g><g class="link" data-entity-1="Base" data-entity-2="GMN14" data-source-line="61" data-uid="lnk16" id="link_Base_GMN14"><path d="M822,212.5518 C822,212.7484 822,212.9449 822,213.1414 C822,213.5344 822,213.9273 822,214.3201 C822,215.1058 822,215.8909 822,216.6754 C822,218.2442 822,219.8101 822,221.3707 C822,224.4917 822,227.5914 822,230.6507 C822,236.7692 822,242.7263 822,248.37" fill="none" id="Base-GMN14" style="stroke:#000000;stroke-width:1;stroke-dasharray:7,7;"/></g></g></svg></div></div>
+
+<h2 id="tag-uwb-module-mobile">Tag UWB (Module Mobile)</h2>
+<p>Le Tag est le dispositif embarqué dans chaque voiture RC. Il assure le positionnement précis grâce aux mesures UWB avec les anchors, gère le chronométrage via la détection IR des passages, transmet les données en temps réel par WiFi et affiche les informations localement sur un écran OLED. Ce module compact intègre plusieurs composants matériels : un module DW3000 pour l'UWB, un ESP32 comme processeur principal avec WiFi intégré, un écran OLED SSD1306 pour l'affichage, un récepteur IR pour le chronométrage, le tout alimenté par une batterie embarquée.</p>
+<h2 id="anchor-uwb-point-fixe">Anchor UWB (Point Fixe)</h2>
+<p>Les Anchors sont les points de référence fixes du système. Ils assurent plusieurs fonctionnalités essentielles : la mesure précise des distances avec les tags mobiles via UWB, l'auto-calibration automatique du réseau d'anchors, une communication WiFi bidirectionnelle avec la station de base, l'affichage de leur état sur un écran OLED intégré, et l'émission de signaux IR pour la détection des passages et secteurs. Au niveau matériel, les anchors utilisent les mêmes composants que les tags, à la différence qu'ils sont équipés d'un émetteur IR au lieu d'un récepteur.</p>
+<h2 id="station-de-base">Station de Base</h2>
+<p>La station de base est le cerveau du système. Elle assure plusieurs fonctionnalités essentielles: le calcul précis des positions par trilatération, le traitement en temps réel des données provenant des tags et anchors, l'enregistrement complet des sessions sur carte SD, la télécommande centralisée de tous les composants du système, ainsi qu'une interface intuitive pour le contrôle et la visualisation.</p>
+<h2 id="flux-de-communication">Flux de Communication</h2>
+<div class='puml-container'><div class="puml light" style="">520. <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title>plantuml.com | 520: Web server is returning an unknown error</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Web server is returning an unknown error</span>
+                <span class="code-label">Error code 520</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2025-11-03 21:58:07 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">Dallas</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">www.plantuml.com</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>There is an unknown connection issue between Cloudflare and the origin web server. As a result, the web page can not be displayed.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    
+                <h3 class="text-15 font-semibold mb-2">If you are a visitor of this website:</h3>
+                <p class="mb-6">Please try again in a few minutes.</p>
+
+                <h3 class="text-15 font-semibold mb-2">If you are the owner of this website:</h3>
+                <p><span>There is an issue between Cloudflare's cache and your origin web server. Cloudflare monitors for these errors and automatically investigates the cause. To help support the investigation, you can pull the corresponding error log from your web server and submit it our support team.  Please include the Ray ID (which is at the bottom of this error page).</span> <a rel="noopener noreferrer" href=   "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/">Additional troubleshooting resources</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">998f21842831f817</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">52.154.130.211</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="813px" preserveAspectRatio="xMidYMid meet" style="width:616px;height:813px;background:#1B1B1B;" version="1.1" viewBox="0 0 616 813" width="616px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="813" style="stroke:none;stroke-width:1;" width="616" x="0" y="0"/><g><title>Tag</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="35.0088" y="381.7578"/></g><g><title>Tag</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="35.0088" y="639.6875"/></g><g><title>Anchors</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="247.8223" y="208.0938"/></g><g><title>Station Base</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="279.3594"/></g><g><title>Station Base</title><rect fill="#313139" height="119.3984" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="453.0234"/></g><g><title>Station Base</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="710.9531"/></g><rect fill="none" height="217.9297" style="stroke:#FFFFFF;stroke-width:1.5;" width="600.5713" x="10" y="111.5625"/><rect fill="none" height="243.9297" style="stroke:#FFFFFF;stroke-width:1.5;" width="543.8486" x="10" y="343.4922"/><rect fill="none" height="159.6641" style="stroke:#FFFFFF;stroke-width:1.5;" width="564.4658" x="10" y="601.4219"/><g><title>Tag</title><rect fill="#000000" fill-opacity="0.00000" height="741.7891" width="8" x="36.0088" y="36.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="40" x2="40" y1="36.2969" y2="778.0859"/></g><g><title>Anchors</title><rect fill="#000000" fill-opacity="0.00000" height="741.7891" width="8" x="248.8223" y="36.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="252.5044" x2="252.5044" y1="36.2969" y2="778.0859"/></g><g><title>Station Base</title><rect fill="#000000" fill-opacity="0.00000" height="741.7891" width="8" x="420.5703" y="36.2969"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="424.4136" x2="424.4136" y1="36.2969" y2="778.0859"/></g><g class="participant participant-head" data-participant="T"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="40.0176" x="20" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26.0176" x="27" y="24.9951">Tag</text></g><g class="participant participant-tail" data-participant="T"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="40.0176" x="20" y="777.0859"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26.0176" x="27" y="797.0811">Tag</text></g><g class="participant participant-head" data-participant="A"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="70.6357" x="217.5044" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56.6357" x="224.5044" y="24.9951">Anchors</text></g><g class="participant participant-tail" data-participant="A"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="70.6357" x="217.5044" y="777.0859"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56.6357" x="224.5044" y="797.0811">Anchors</text></g><g class="participant participant-head" data-participant="B"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="102.3135" x="373.4136" y="5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88.3135" x="380.4136" y="24.9951">Station Base</text></g><g class="participant participant-tail" data-participant="B"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="102.3135" x="373.4136" y="777.0859"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88.3135" x="380.4136" y="797.0811">Station Base</text></g><g><title>Tag</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="35.0088" y="381.7578"/></g><g><title>Tag</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="35.0088" y="639.6875"/></g><g><title>Anchors</title><rect fill="#313139" height="71.2656" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="247.8223" y="208.0938"/></g><g><title>Station Base</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="279.3594"/></g><g><title>Station Base</title><rect fill="#313139" height="119.3984" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="453.0234"/></g><g><title>Station Base</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="419.5703" y="710.9531"/></g><g class="message" data-participant-1="T" data-participant-2="B"><polygon fill="#E7E7E7" points="412.5703,63.4297,422.5703,67.4297,412.5703,71.4297,416.5703,67.4297" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="40.0088" x2="418.5703" y1="67.4297" y2="67.4297"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69.0054" x="47.0088" y="62.3638">Connexion</text></g><g class="message" data-participant-1="A" data-participant-2="B"><polygon fill="#E7E7E7" points="412.5703,92.5625,422.5703,96.5625,412.5703,100.5625,416.5703,96.5625" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="252.8223" x2="418.5703" y1="96.5625" y2="96.5625"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69.0054" x="259.8223" y="91.4966">Connexion</text></g><path d="M10,111.5625 L225.0283,111.5625 L225.0283,118.6953 L215.0283,128.6953 L10,128.6953 L10,111.5625" fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="217.9297" style="stroke:#FFFFFF;stroke-width:1.5;" width="600.5713" x="10" y="111.5625"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="170.0283" x="25" y="124.6294">Loop Contrôle Système</text><g class="message" data-participant-1="B" data-participant-2="T"><polygon fill="#E7E7E7" points="51.0088,145.8281,41.0088,149.8281,51.0088,153.8281,47.0088,149.8281" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="45.0088" x2="423.5703" y1="149.8281" y2="149.8281"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="88.1626" x="57.0088" y="144.7622">Configuration</text></g><g class="message" data-participant-1="B" data-participant-2="A"><polygon fill="#E7E7E7" points="263.8223,174.9609,253.8223,178.9609,263.8223,182.9609,259.8223,178.9609" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="257.8223" x2="423.5703" y1="178.9609" y2="178.9609"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="88.1626" x="269.8223" y="173.895">Configuration</text></g><g class="message" data-participant-1="B" data-participant-2="A"><polygon fill="#E7E7E7" points="268.8223,204.0938,258.8223,208.0938,268.8223,212.0938,264.8223,208.0938" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="262.8223" x2="423.5703" y1="208.0938" y2="208.0938"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="147.748" x="274.8223" y="203.0278">Commande calibration</text></g><g class="message" data-participant-1="A" data-participant-2="A"><line style="stroke:#E7E7E7;stroke-width:1;" x1="257.8223" x2="299.8223" y1="237.2266" y2="237.2266"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="299.8223" x2="299.8223" y1="237.2266" y2="250.2266"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="258.8223" x2="299.8223" y1="250.2266" y2="250.2266"/><polygon fill="#E7E7E7" points="268.8223,246.2266,258.8223,250.2266,268.8223,254.2266,264.8223,250.2266" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="103.6763" x="264.8223" y="232.1606">Auto-calibration</text></g><g class="message" data-participant-1="A" data-participant-2="B"><polygon fill="#E7E7E7" points="407.5703,275.3594,417.5703,279.3594,407.5703,283.3594,411.5703,279.3594" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="252.8223" x2="413.5703" y1="279.3594" y2="279.3594"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123.6523" x="259.8223" y="274.2935">Vecteur calibration</text></g><g class="message" data-participant-1="B" data-participant-2="B"><line style="stroke:#E7E7E7;stroke-width:1;" x1="429.5703" x2="471.5703" y1="313.4922" y2="313.4922"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="471.5703" x2="471.5703" y1="313.4922" y2="326.4922"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.5703" x2="471.5703" y1="326.4922" y2="326.4922"/><polygon fill="#E7E7E7" points="434.5703,322.4922,424.5703,326.4922,434.5703,330.4922,430.5703,326.4922" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="152.001" x="436.5703" y="308.4263">Calcul position Anchors</text></g><path d="M10,343.4922 L129.7817,343.4922 L129.7817,350.625 L119.7817,360.625 L10,360.625 L10,343.4922" fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="243.9297" style="stroke:#FFFFFF;stroke-width:1.5;" width="543.8486" x="10" y="343.4922"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="74.7817" x="25" y="356.5591">Loop UWB</text><g class="message" data-participant-1="A" data-participant-2="T"><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="56.0088" y1="381.7578" y2="377.7578"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="56.0088" y1="381.7578" y2="385.7578"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="45.0088" x2="251.8223" y1="381.7578" y2="381.7578"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159.1548" x="62.0088" y="376.6919">AT+RANGE (range data)</text></g><g class="message" data-participant-1="T" data-participant-2="T"><line style="stroke:#E7E7E7;stroke-width:1;" x1="45.0088" x2="87.0088" y1="410.8906" y2="410.8906"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="87.0088" x2="87.0088" y1="410.8906" y2="423.8906"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="87.0088" y1="423.8906" y2="423.8906"/><polygon fill="#E7E7E7" points="56.0088,419.8906,46.0088,423.8906,56.0088,427.8906,52.0088,423.8906" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178.8135" x="52.0088" y="405.8247">Data extraction &amp; buffering</text></g><g class="message" data-participant-1="T" data-participant-2="B"><polygon fill="#E7E7E7" points="407.5703,449.0234,417.5703,453.0234,407.5703,457.0234,411.5703,453.0234" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="40.0088" x2="413.5703" y1="453.0234" y2="453.0234"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="137.1284" x="47.0088" y="447.9575">Envoi données (WiFi)</text></g><g class="message" data-participant-1="B" data-participant-2="B"><line style="stroke:#E7E7E7;stroke-width:1;" x1="429.5703" x2="471.5703" y1="482.1563" y2="482.1563"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="471.5703" x2="471.5703" y1="482.1563" y2="495.1563"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="430.5703" x2="471.5703" y1="495.1563" y2="495.1563"/><polygon fill="#E7E7E7" points="440.5703,491.1563,430.5703,495.1563,440.5703,499.1563,436.5703,495.1563" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="95.2783" x="436.5703" y="477.0903">Calcul position</text></g><g class="message" data-participant-1="B" data-participant-2="B"><line style="stroke:#E7E7E7;stroke-width:1;" x1="429.5703" x2="471.5703" y1="524.2891" y2="524.2891"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="471.5703" x2="471.5703" y1="524.2891" y2="537.2891"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="430.5703" x2="471.5703" y1="537.2891" y2="537.2891"/><polygon fill="#E7E7E7" points="440.5703,533.2891,430.5703,537.2891,440.5703,541.2891,436.5703,537.2891" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="49.3594" x="436.5703" y="519.2231">Filtrage</text></g><g class="message" data-participant-1="B" data-participant-2="B"><line style="stroke:#E7E7E7;stroke-width:1;" x1="429.5703" x2="471.5703" y1="571.4219" y2="571.4219"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="471.5703" x2="471.5703" y1="571.4219" y2="584.4219"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.5703" x2="471.5703" y1="584.4219" y2="584.4219"/><polygon fill="#E7E7E7" points="434.5703,580.4219,424.5703,584.4219,434.5703,588.4219,430.5703,584.4219" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="82.5894" x="436.5703" y="566.356">Stockage SD</text></g><path d="M10,601.4219 L109.8247,601.4219 L109.8247,608.5547 L99.8247,618.5547 L10,618.5547 L10,601.4219" fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="159.6641" style="stroke:#FFFFFF;stroke-width:1.5;" width="564.4658" x="10" y="601.4219"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="54.8247" x="25" y="614.4888">Loop IR</text><g class="message" data-participant-1="A" data-participant-2="T"><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="56.0088" y1="639.6875" y2="635.6875"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="56.0088" y1="639.6875" y2="643.6875"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="45.0088" x2="251.8223" y1="639.6875" y2="639.6875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="125.1885" x="62.0088" y="634.6216">Signal IR (passage)</text></g><g class="message" data-participant-1="T" data-participant-2="T"><line style="stroke:#E7E7E7;stroke-width:1;" x1="45.0088" x2="87.0088" y1="668.8203" y2="668.8203"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="87.0088" x2="87.0088" y1="668.8203" y2="681.8203"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="46.0088" x2="87.0088" y1="681.8203" y2="681.8203"/><polygon fill="#E7E7E7" points="56.0088,677.8203,46.0088,681.8203,56.0088,685.8203,52.0088,681.8203" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="118.3076" x="52.0088" y="663.7544">Décodage secteur</text></g><g class="message" data-participant-1="T" data-participant-2="B"><polygon fill="#E7E7E7" points="407.5703,706.9531,417.5703,710.9531,407.5703,714.9531,411.5703,710.9531" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="40.0088" x2="413.5703" y1="710.9531" y2="710.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96.3574" x="47.0088" y="705.8872">Temps secteur</text></g><g class="message" data-participant-1="B" data-participant-2="B"><line style="stroke:#E7E7E7;stroke-width:1;" x1="429.5703" x2="471.5703" y1="745.0859" y2="745.0859"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="471.5703" x2="471.5703" y1="745.0859" y2="758.0859"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.5703" x2="471.5703" y1="758.0859" y2="758.0859"/><polygon fill="#E7E7E7" points="434.5703,754.0859,424.5703,758.0859,434.5703,762.0859,430.5703,758.0859" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115.8955" x="436.5703" y="740.02">Mise à jour temps</text></g></g></svg></div></div>
+
+<h1 id="calibration-des-anchors">Calibration des Anchors</h1>
+<p>La <strong>calibration des anchors</strong> vise à déterminer les positions relatives des différentes ancres (points fixes) du système, à partir des <strong>distances mutuelles mesurées</strong> par les modules UWB.<br />
+Cette étape permet de construire un <strong>repère cohérent</strong>, dans lequel les positions ultérieures des <em>tags</em> pourront être exprimées.</p>
+<h2 id="digramme-detat">Digramme d'état</h2>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="STATE" height="811px" preserveAspectRatio="xMidYMid meet" style="width:860px;height:811px;background:#FFFFFF;" version="1.1" viewBox="0 0 860 811" width="860px" zoomAndPan="magnify" class="diagram"><title>Diagramme d'état détaillé — Calibrator (version étendue)</title><defs/><g><g class="title" data-source-line="2"><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="455.417" x="195.3648" y="22.9951">Diagramme d'état détaillé — Calibrator (version étendue)</text></g><path d="M65.05,123.2969 L524.6897,123.2969 A12.5,12.5 0 0 1 537.1897,135.7969 L537.1897,149.5938 L52.55,149.5938 L52.55,135.7969 A12.5,12.5 0 0 1 65.05,123.2969" fill="#F1F1F1"/><rect fill="none" height="229.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="484.6397" x="52.55" y="123.2969"/><line style="stroke:#181818;stroke-width:0.5;" x1="52.55" x2="537.1897" y1="149.5938" y2="149.5938"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110.8242" x="239.4577" y="141.292">ANCHOR_MODE</text><ellipse cx="159.79" cy="170.5938" fill="#222222" rx="10" ry="10" style="stroke:#222222;stroke-width:0.5;"/><g id="ANCHOR_MODE.COLLECTING_TAG_DATA"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="190.4814" x="64.55" y="217.5938"/><line style="stroke:#181818;stroke-width:0.5;" x1="64.55" x2="255.0314" y1="243.8906" y2="243.8906"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="170.4814" x="74.55" y="235.5889">COLLECTING_TAG_DATA</text></g><ellipse cx="159.79" cy="331.5938" fill="none" rx="11" ry="11" style="stroke:#222222;stroke-width:0.5;"/><ellipse cx="159.79" cy="331.5938" fill="#222222" rx="6" ry="6" style="stroke:#222222;stroke-width:1;"/><g class="link" data-entity-1=".start.ANCHOR_MODE" data-entity-2="COLLECTING_TAG_DATA" data-source-line="14" data-uid="lnk8" id="link_.start.ANCHOR_MODE_COLLECTING_TAG_DATA"><path d="M159.79,181.0338 C159.79,190.2938 159.79,198.7838 159.79,211.2738" fill="none" id="*start*ANCHOR_MODE-to-COLLECTING_TAG_DATA" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="159.79,217.2738,163.79,208.2738,159.79,212.2738,155.79,208.2738,159.79,217.2738" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="COLLECTING_TAG_DATA" data-entity-2="COLLECTING_TAG_DATA" data-source-line="15" data-uid="lnk9" id="link_COLLECTING_TAG_DATA_COLLECTING_TAG_DATA"><path d="M255.21,235.6838 C266.02,236.9738 273.03,239.2838 273.03,242.5938 C273.03,245.9038 271.9777,247.5028 261.1677,248.7928" fill="none" id="COLLECTING_TAG_DATA-to-COLLECTING_TAG_DATA" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="255.21,249.5038,264.6206,252.4091,260.1748,248.9113,263.6726,244.4655,255.21,249.5038" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="243.1597" x="279.03" y="247.1606">onRangingData() / update_tag_data()</text></g><g class="link" data-entity-1="COLLECTING_TAG_DATA" data-entity-2=".end.ANCHOR_MODE" data-source-line="16" data-uid="lnk11" id="link_COLLECTING_TAG_DATA_.end.ANCHOR_MODE"><path d="M159.79,267.8238 C159.79,285.1238 159.79,301.5138 159.79,314.3438" fill="none" id="COLLECTING_TAG_DATA-to-*end*ANCHOR_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="159.79,320.3438,163.79,311.3438,159.79,315.3438,155.79,311.3438,159.79,320.3438" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111.1538" x="160.79" y="298.6606">startCalibration()</text></g><path d="M19.5,412.5869 L570.2483,412.5869 A12.5,12.5 0 0 1 582.7483,425.0869 L582.7483,438.8838 L7,438.8838 L7,425.0869 A12.5,12.5 0 0 1 19.5,412.5869" fill="#F1F1F1"/><rect fill="none" height="393.2969" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="575.7483" x="7" y="412.5869"/><line style="stroke:#181818;stroke-width:0.5;" x1="7" x2="582.7483" y1="438.8838" y2="438.8838"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="78.7021" x="255.5231" y="430.582">TAG_MODE</text><g class="entity" data-entity="c" data-uid="ent0004" id="entity_c"><polygon fill="#F1F1F1" points="133.96,609.8838,145.96,621.8838,133.96,633.8838,121.96,621.8838,133.96,609.8838" style="stroke:#181818;stroke-width:0.5;"/></g><ellipse cx="133.96" cy="459.8838" fill="#222222" rx="10" ry="10" style="stroke:#222222;stroke-width:0.5;"/><g id="TAG_MODE.COLLECTING"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="109.0176" x="79.45" y="522.8838"/><line style="stroke:#181818;stroke-width:0.5;" x1="79.45" x2="188.4676" y1="549.1806" y2="549.1806"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89.0176" x="89.45" y="540.8789">COLLECTING</text></g><g id="TAG_MODE.SENDING_DATA"><rect fill="#F1F1F1" height="50" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="129.9219" x="19" y="686.8838"/><line style="stroke:#181818;stroke-width:0.5;" x1="19" x2="148.9219" y1="713.1806" y2="713.1806"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109.9219" x="29" y="704.8789">SENDING_DATA</text></g><ellipse cx="148.96" cy="784.8838" fill="none" rx="11" ry="11" style="stroke:#222222;stroke-width:0.5;"/><ellipse cx="148.96" cy="784.8838" fill="#222222" rx="6" ry="6" style="stroke:#222222;stroke-width:1;"/><g class="link" data-entity-1=".start.TAG_MODE" data-entity-2="COLLECTING" data-source-line="28" data-uid="lnk14" id="link_.start.TAG_MODE_COLLECTING"><path d="M133.96,470.0838 C133.96,482.4838 133.96,498.9938 133.96,516.4438" fill="none" id="*start*TAG_MODE-to-COLLECTING" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="133.96,522.4438,137.96,513.4438,133.96,517.4438,129.96,513.4438,133.96,522.4438" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111.687" x="134.96" y="500.9506">onRangingStart()</text></g><g class="link" data-entity-1="COLLECTING" data-entity-2="COLLECTING" data-source-line="29" data-uid="lnk15" id="link_COLLECTING_COLLECTING"><path d="M188.66,540.1138 C199.09,541.0438 206.47,543.6338 206.47,547.8838 C206.47,552.1338 205.0663,554.1909 194.6363,555.1209" fill="none" id="COLLECTING-to-COLLECTING" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="188.66,555.6538,197.9797,558.8386,193.6402,555.2097,197.2692,550.8702,188.66,555.6538" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="355.2783" x="212.47" y="552.4506">onMeasurementReceived() / update_calibration_data()</text></g><g class="link" data-entity-1="COLLECTING" data-entity-2="c" data-source-line="30" data-uid="lnk16" id="link_COLLECTING_c"><path d="M133.96,573.2638 C133.96,585.4938 133.96,593.7438 133.96,603.4438" fill="none" id="COLLECTING-to-c" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="133.96,609.4438,137.96,600.4438,133.96,604.4438,129.96,600.4438,133.96,609.4438" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="c" data-entity-2="SENDING_DATA" data-source-line="31" data-uid="lnk18" id="link_c_SENDING_DATA"><path d="M123.53,624.1538 C108.67,626.5938 81.86,633.4338 69.96,651.8838 C63.34,662.1438 63.3939,669.644 67.8339,680.874" fill="none" id="c-to-SENDING_DATA" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="70.04,686.4538,70.4507,676.6135,68.2016,681.804,63.0111,679.5549,70.04,686.4538" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="114.5815" x="70.96" y="664.9506">enoughSamples()</text></g><g class="link" data-entity-1="c" data-entity-2=".end.TAG_MODE" data-source-line="32" data-uid="lnk20" id="link_c_.end.TAG_MODE"><path d="M143.32,625.0138 C155.62,628.3738 176.75,636.1938 185.96,651.8838 C210.79,694.1638 175.2897,749.0661 159.0797,770.7761" fill="none" id="c-to-*end*TAG_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="155.49,775.5838,164.0797,770.7654,158.4814,771.5773,157.6694,765.9791,155.49,775.5838" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="50.6606" x="194.96" y="716.4506">timeout</text></g><g class="link" data-entity-1="SENDING_DATA" data-entity-2=".end.TAG_MODE" data-source-line="33" data-uid="lnk21" id="link_SENDING_DATA_.end.TAG_MODE"><path d="M106.33,737.3138 C118.82,750.9538 129.468,762.5886 137.938,771.8386" fill="none" id="SENDING_DATA-to-*end*TAG_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="141.99,776.2638,138.8621,766.9248,138.6134,772.5762,132.962,772.3274,141.99,776.2638" style="stroke:#181818;stroke-width:1;"/></g><ellipse cx="294.87" cy="53.2969" fill="#222222" rx="10" ry="10" style="stroke:#222222;stroke-width:0.5;"/><g class="entity" data-entity="GMN2" data-source-line="9" data-uid="ent0003" id="entity_GMN2"><path d="M572.61,217.8069 L572.61,233.9369 L537.35,237.9369 L572.61,241.9369 L572.61,258.0725 A0,0 0 0 0 572.61,258.0725 L853.1466,258.0725 A0,0 0 0 0 853.1466,258.0725 L853.1466,227.8069 L843.1466,217.8069 L572.61,217.8069 A0,0 0 0 0 572.61,217.8069" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M843.1466,217.8069 L843.1466,227.8069 L853.1466,227.8069 L843.1466,217.8069" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="259.5366" x="578.61" y="234.8738">Mode anchor normal : répond aux polls,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="218.3911" x="578.61" y="250.0066">reçoit commandes de calibration.</text></g><g class="entity" data-entity="GMN5" data-source-line="20" data-uid="ent0006" id="entity_GMN5"><path d="M617.82,581.5369 L617.82,605.2369 L582.94,609.2369 L617.82,613.2369 L617.82,636.9353 A0,0 0 0 0 617.82,636.9353 L845.9313,636.9353 A0,0 0 0 0 845.9313,636.9353 L845.9313,591.5369 L835.9313,581.5369 L617.82,581.5369 A0,0 0 0 0 617.82,581.5369" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M835.9313,581.5369 L835.9313,591.5369 L845.9313,591.5369 L835.9313,581.5369" fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="202.979" x="623.82" y="598.6038">Le device est configuré en TAG</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="176.7886" x="623.82" y="613.7366">pour mesurer les distances</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158.7993" x="623.82" y="628.8694">avec les autres anchors.</text></g><g class="link" data-entity-1=".start." data-entity-2="ANCHOR_MODE" data-source-line="4" data-uid="lnk3" id="link_.start._ANCHOR_MODE"><path d="M294.87,63.5969 C294.87,75.6669 294.87,92.1369 294.87,116.9869" fill="none" id="*start*-to-ANCHOR_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="294.87,122.9869,298.87,113.9869,294.87,117.9869,290.87,113.9869,294.87,122.9869" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="ANCHOR_MODE" data-entity-2="TAG_MODE" data-source-line="5" data-uid="lnk4" id="link_ANCHOR_MODE_TAG_MODE"><path d="M282.99,353.0069 C282.5,371.9669 282.2436,386.1069 282.1636,406.4169" fill="none" id="ANCHOR_MODE-to-TAG_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="282.14,412.4169,286.1754,403.4327,282.1597,407.4169,278.1755,403.4012,282.14,412.4169" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="TAG_MODE" data-entity-2="ANCHOR_MODE" data-source-line="6" data-uid="lnk5" id="link_TAG_MODE_ANCHOR_MODE"><path d="M308.35,412.4169 C308.27,392.1069 308.1313,377.9647 307.6213,359.0047" fill="none" id="TAG_MODE-to-ANCHOR_MODE" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="307.46,353.0069,303.7034,362.1112,307.5944,358.0051,311.7006,361.8961,307.46,353.0069" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style="">520. <!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+
+<title>plantuml.com | 520: Web server is returning an unknown error</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" id="cf_styles-css" href="/cdn-cgi/styles/main.css" />
+</head>
+<body>
+<div id="cf-wrapper">
+    <div id="cf-error-details" class="p-0">
+        <header class="mx-auto pt-10 lg:pt-6 lg:px-8 w-240 lg:w-full mb-8">
+            <h1 class="inline-block sm:block sm:mb-2 font-light text-60 lg:text-4xl text-black-dark leading-tight mr-2">
+                <span class="inline-block">Web server is returning an unknown error</span>
+                <span class="code-label">Error code 520</span>
+            </h1>
+            <div>
+                Visit <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> for more information.
+            </div>
+            <div class="mt-3">2025-11-03 21:58:07 UTC</div>
+        </header>
+        <div class="my-8 bg-gradient-gray">
+            <div class="w-240 lg:w-full mx-auto">
+                <div class="clearfix md:px-8">
+                    <div id="cf-browser-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-browser block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">You</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Browser
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-cloudflare-status" class=" relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    <span class="cf-icon-cloud block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-ok w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    </a>
+  </div>
+  <span class="md:block w-full truncate">Kansas City</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  <a href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&utm_campaign=www.plantuml.com" target="_blank" rel="noopener noreferrer">
+    Cloudflare
+  </a>
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-green-success">Working</span>
+  
+</div>
+                    <div id="cf-host-status" class="cf-error-source relative w-1/3 md:w-full py-15 md:p-0 md:py-8 md:text-left md:border-solid md:border-0 md:border-b md:border-gray-400 overflow-hidden float-left md:float-none text-center">
+  <div class="relative mb-10 md:m-0">
+    
+    <span class="cf-icon-server block md:hidden h-20 bg-center bg-no-repeat"></span>
+    <span class="cf-icon-error w-12 h-12 absolute left-1/2 md:left-auto md:right-0 md:top-0 -ml-6 -bottom-4"></span>
+    
+  </div>
+  <span class="md:block w-full truncate">www.plantuml.com</span>
+  <h3 class="md:inline-block mt-3 md:mt-0 text-2xl text-gray-600 font-light leading-1.3">
+  
+    Host
+  
+  </h3>
+  
+  <span class="leading-1.3 text-2xl text-red-error">Error</span>
+  
+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-240 lg:w-full mx-auto mb-8 lg:px-8">
+            <div class="clearfix">
+                <div class="w-1/2 md:w-full float-left pr-6 md:pb-10 md:pr-0 leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What happened?</h2>
+                    <p>There is an unknown connection issue between Cloudflare and the origin web server. As a result, the web page can not be displayed.</p>
+                </div>
+                <div class="w-1/2 md:w-full float-left leading-relaxed">
+                    <h2 class="text-3xl font-normal leading-1.3 mb-4">What can I do?</h2>
+                    
+                <h3 class="text-15 font-semibold mb-2">If you are a visitor of this website:</h3>
+                <p class="mb-6">Please try again in a few minutes.</p>
+
+                <h3 class="text-15 font-semibold mb-2">If you are the owner of this website:</h3>
+                <p><span>There is an issue between Cloudflare's cache and your origin web server. Cloudflare monitors for these errors and automatically investigates the cause. To help support the investigation, you can pull the corresponding error log from your web server and submit it our support team.  Please include the Ray ID (which is at the bottom of this error page).</span> <a rel="noopener noreferrer" href=   "https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/">Additional troubleshooting resources</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-error-footer cf-wrapper w-240 lg:w-full py-10 sm:py-4 sm:px-8 mx-auto text-center sm:text-left border-solid border-0 border-t border-gray-300">
+    <p class="text-13">
+      <span class="cf-footer-item sm:block sm:mb-1">Cloudflare Ray ID: <strong class="font-semibold">998f21845fda4de8</strong></span>
+      <span class="cf-footer-separator sm:hidden">&bull;</span>
+      <span id="cf-footer-item-ip" class="cf-footer-item hidden sm:block sm:mb-1">
+        Your IP:
+        <button type="button" id="cf-footer-ip-reveal" class="cf-footer-ip-reveal-btn">Click to reveal</button>
+        <span class="hidden" id="cf-footer-ip">52.154.130.211</span>
+        <span class="cf-footer-separator sm:hidden">&bull;</span>
+      </span>
+      <span class="cf-footer-item sm:block sm:mb-1"><span>Performance &amp; security by</span> <a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing?utm_source=errorcode_520&#38;utm_campaign=www.plantuml.com" id="brand_link" target="_blank">Cloudflare</a></span>
+      
+    </p>
+    <script>(function(){function d(){var b=a.getElementById("cf-footer-item-ip"),c=a.getElementById("cf-footer-ip-reveal");b&&"classList"in b&&(b.classList.remove("hidden"),c.addEventListener("click",function(){c.classList.add("hidden");a.getElementById("cf-footer-ip").classList.remove("hidden")}))}var a=document;document.addEventListener&&a.addEventListener("DOMContentLoaded",d)})();</script>
+  </div><!-- /.error-footer -->
+
+    </div>
+</div>
+</body>
+</html></div></div>
+
+<h2 id="diagramme-de-sequence">Diagramme de séquence</h2>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="605px" preserveAspectRatio="xMidYMid meet" style="width:936px;height:605px;background:#FFFFFF;" version="1.1" viewBox="0 0 936 605" width="936px" zoomAndPan="magnify" class="diagram"><title>Séquence — Démarrage et déroulé d'une calibration</title><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="413.0068" x="263.2852" y="27.9951">Séquence — Démarrage et déroulé d'une calibration</text><g><title>MessageDecoder</title><rect fill="#F1F1F1" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="281.8677" y="104.7266"/></g><g><title>Calibrator</title><rect fill="#F1F1F1" height="411.5938" style="stroke:#181818;stroke-width:1;" width="10" x="413.3569" y="133.8594"/></g><g><title>UWBAnchor</title><rect fill="#F1F1F1" height="35.1328" style="stroke:#181818;stroke-width:1;" width="10" x="660.9111" y="205.125"/></g><rect fill="none" height="117.5313" style="stroke:#000000;stroke-width:1.5;" width="563.8032" x="366.7739" y="262.2578"/><rect fill="none" height="88.3984" style="stroke:#000000;stroke-width:1.5;" width="655.9111" x="10" y="393.7891"/><g><title>WifiCommunication</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="91.4482" y="73.5938"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="95" x2="95" y1="73.5938" y2="570.4531"/></g><g><title>MessageDecoder</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="282.8677" y="73.5938"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="286.7319" x2="286.7319" y1="73.5938" y2="570.4531"/></g><g><title>Calibrator</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="414.3569" y="73.5938"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="417.7739" x2="417.7739" y1="73.5938" y2="570.4531"/></g><g><title>UWBAnchor</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="661.9111" y="73.5938"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="665.3931" x2="665.3931" y1="73.5938" y2="570.4531"/></g><g><title>DisplayManager</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="853.0918" y="73.5938"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5,5;" x1="856.6064" x2="856.6064" y1="73.5938" y2="570.4531"/></g><g class="participant participant-head" data-participant="Wifi"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="150.8965" x="20" y="42.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.8965" x="27" y="62.292">WifiCommunication</text></g><g class="participant participant-tail" data-participant="Wifi"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="150.8965" x="20" y="569.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.8965" x="27" y="589.4482">WifiCommunication</text></g><g class="participant participant-head" data-participant="MessageDecoder"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="134.2715" x="219.7319" y="42.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.2715" x="226.7319" y="62.292">MessageDecoder</text></g><g class="participant participant-tail" data-participant="MessageDecoder"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="134.2715" x="219.7319" y="569.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.2715" x="226.7319" y="589.4482">MessageDecoder</text></g><g class="participant participant-head" data-participant="Calibrator"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83.166" x="376.7739" y="42.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.166" x="383.7739" y="62.292">Calibrator</text></g><g class="participant participant-tail" data-participant="Calibrator"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="83.166" x="376.7739" y="569.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.166" x="383.7739" y="589.4482">Calibrator</text></g><g class="participant participant-head" data-participant="UWBAnchor"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97.0361" x="617.3931" y="42.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83.0361" x="624.3931" y="62.292">UWBAnchor</text></g><g class="participant participant-tail" data-participant="UWBAnchor"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="97.0361" x="617.3931" y="569.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83.0361" x="624.3931" y="589.4482">UWBAnchor</text></g><g class="participant participant-head" data-participant="Display"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="126.9707" x="793.6064" y="42.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.9707" x="800.6064" y="62.292">DisplayManager</text></g><g class="participant participant-tail" data-participant="Display"><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="126.9707" x="793.6064" y="569.4531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.9707" x="800.6064" y="589.4482">DisplayManager</text></g><g><title>MessageDecoder</title><rect fill="#F1F1F1" height="29.1328" style="stroke:#181818;stroke-width:1;" width="10" x="281.8677" y="104.7266"/></g><g><title>Calibrator</title><rect fill="#F1F1F1" height="411.5938" style="stroke:#181818;stroke-width:1;" width="10" x="413.3569" y="133.8594"/></g><g><title>UWBAnchor</title><rect fill="#F1F1F1" height="35.1328" style="stroke:#181818;stroke-width:1;" width="10" x="660.9111" y="205.125"/></g><g class="message" data-participant-1="Wifi" data-participant-2="MessageDecoder"><polygon fill="#181818" points="269.8677,100.7266,279.8677,104.7266,269.8677,108.7266,273.8677,104.7266" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="95.4482" x2="275.8677" y1="104.7266" y2="104.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="167.4194" x="102.4482" y="99.6606">StartCalibration(deviceId)</text></g><g class="message" data-participant-1="MessageDecoder" data-participant-2="Calibrator"><polygon fill="#181818" points="401.3569,129.8594,411.3569,133.8594,401.3569,137.8594,405.3569,133.8594" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="286.8677" x2="407.3569" y1="133.8594" y2="133.8594"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="102.4893" x="293.8677" y="128.7935">StartCalibration</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="465.3569" y1="162.9922" y2="162.9922"/><line style="stroke:#181818;stroke-width:1;" x1="465.3569" x2="465.3569" y1="162.9922" y2="175.9922"/><line style="stroke:#181818;stroke-width:1;" x1="424.3569" x2="465.3569" y1="175.9922" y2="175.9922"/><polygon fill="#181818" points="434.3569,171.9922,424.3569,175.9922,434.3569,179.9922,430.3569,175.9922" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145.1265" x="430.3569" y="157.9263">resetCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="UWBAnchor"><polygon fill="#181818" points="648.9111,201.125,658.9111,205.125,648.9111,209.125,652.9111,205.125" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="654.9111" y1="205.125" y2="205.125"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130.7236" x="430.3569" y="200.0591">switch to TAG mode</text></g><g class="message" data-participant-1="UWBAnchor" data-participant-2="UWBAnchor"><line style="stroke:#181818;stroke-width:1;" x1="670.9111" x2="712.9111" y1="239.2578" y2="239.2578"/><line style="stroke:#181818;stroke-width:1;" x1="712.9111" x2="712.9111" y1="239.2578" y2="252.2578"/><line style="stroke:#181818;stroke-width:1;" x1="665.9111" x2="712.9111" y1="252.2578" y2="252.2578"/><polygon fill="#181818" points="675.9111,248.2578,665.9111,252.2578,675.9111,256.2578,671.9111,252.2578" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157.1807" x="677.9111" y="234.1919">apply TAG configuration</text></g><path d="M366.7739,262.2578 L443.3979,262.2578 L443.3979,269.3906 L433.3979,279.3906 L366.7739,279.3906 L366.7739,262.2578" fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="117.5313" style="stroke:#000000;stroke-width:1.5;" width="563.8032" x="366.7739" y="262.2578"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="381.7739" y="275.3247">loop</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="176.8164" x="458.3979" y="274.4683">[until calibration is finished]</text><g class="message" data-participant-1="UWBAnchor" data-participant-2="Calibrator"><polygon fill="#181818" points="434.3569,296.5234,424.3569,300.5234,434.3569,304.5234,430.3569,300.5234" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="428.3569" x2="664.9111" y1="300.5234" y2="300.5234"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110.9697" x="440.3569" y="295.4575">onRangingData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="465.3569" y1="329.6563" y2="329.6563"/><line style="stroke:#181818;stroke-width:1;" x1="465.3569" x2="465.3569" y1="329.6563" y2="342.6563"/><line style="stroke:#181818;stroke-width:1;" x1="424.3569" x2="465.3569" y1="342.6563" y2="342.6563"/><polygon fill="#181818" points="434.3569,338.6563,424.3569,342.6563,434.3569,346.6563,430.3569,342.6563" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157.7202" x="430.3569" y="324.5903">updateCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Display"><polygon fill="#181818" points="845.0918,367.7891,855.0918,371.7891,845.0918,375.7891,849.0918,371.7891" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="851.0918" y1="371.7891" y2="371.7891"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96.0972" x="430.3569" y="366.7231">update display</text></g><path d="M10,393.7891 L74.4429,393.7891 L74.4429,400.9219 L64.4429,410.9219 L10,410.9219 L10,393.7891" fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="88.3984" style="stroke:#000000;stroke-width:1.5;" width="655.9111" x="10" y="393.7891"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="19.4429" x="25" y="406.856">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="108.8989" x="89.4429" y="405.9995">[enoughSamples]</text><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="465.3569" y1="432.0547" y2="432.0547"/><line style="stroke:#181818;stroke-width:1;" x1="465.3569" x2="465.3569" y1="432.0547" y2="445.0547"/><line style="stroke:#181818;stroke-width:1;" x1="424.3569" x2="465.3569" y1="445.0547" y2="445.0547"/><polygon fill="#181818" points="434.3569,441.0547,424.3569,445.0547,434.3569,449.0547,430.3569,445.0547" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213.5542" x="430.3569" y="426.9888">makeJSONFromCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Wifi"><polygon fill="#181818" points="106.4482,470.1875,96.4482,474.1875,106.4482,478.1875,102.4482,474.1875" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="100.4482" x2="412.3569" y1="474.1875" y2="474.1875"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.1777" x="112.4482" y="469.1216">sendCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Display"><polygon fill="#181818" points="845.0918,506.3203,855.0918,510.3203,845.0918,514.3203,849.0918,510.3203" style="stroke:#181818;stroke-width:1;"/><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="851.0918" y1="510.3203" y2="510.3203"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96.0972" x="430.3569" y="505.2544">update display</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#181818;stroke-width:1;" x1="423.3569" x2="465.3569" y1="544.4531" y2="544.4531"/><line style="stroke:#181818;stroke-width:1;" x1="465.3569" x2="465.3569" y1="544.4531" y2="557.4531"/><line style="stroke:#181818;stroke-width:1;" x1="418.3569" x2="465.3569" y1="557.4531" y2="557.4531"/><polygon fill="#181818" points="428.3569,553.4531,418.3569,557.4531,428.3569,561.4531,424.3569,557.4531" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105.3647" x="430.3569" y="539.3872">endCalibration()</text></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="SEQUENCE" height="605px" preserveAspectRatio="xMidYMid meet" style="width:936px;height:605px;background:#1B1B1B;" version="1.1" viewBox="0 0 936 605" width="936px" zoomAndPan="magnify" class="diagram"><title>Séquence — Démarrage et déroulé d'une calibration</title><defs/><g><rect fill="#1B1B1B" height="605" style="stroke:none;stroke-width:1;" width="936" x="0" y="0"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="413.0068" x="263.2852" y="27.9951">Séquence — Démarrage et déroulé d'une calibration</text><g><title>MessageDecoder</title><rect fill="#313139" height="29.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="281.8677" y="104.7266"/></g><g><title>Calibrator</title><rect fill="#313139" height="411.5938" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="413.3569" y="133.8594"/></g><g><title>UWBAnchor</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="660.9111" y="205.125"/></g><rect fill="none" height="117.5313" style="stroke:#FFFFFF;stroke-width:1.5;" width="563.8032" x="366.7739" y="262.2578"/><rect fill="none" height="88.3984" style="stroke:#FFFFFF;stroke-width:1.5;" width="655.9111" x="10" y="393.7891"/><g><title>WifiCommunication</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="91.4482" y="73.5938"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="95" x2="95" y1="73.5938" y2="570.4531"/></g><g><title>MessageDecoder</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="282.8677" y="73.5938"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="286.7319" x2="286.7319" y1="73.5938" y2="570.4531"/></g><g><title>Calibrator</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="414.3569" y="73.5938"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="417.7739" x2="417.7739" y1="73.5938" y2="570.4531"/></g><g><title>UWBAnchor</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="661.9111" y="73.5938"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="665.3931" x2="665.3931" y1="73.5938" y2="570.4531"/></g><g><title>DisplayManager</title><rect fill="#000000" fill-opacity="0.00000" height="496.8594" width="8" x="853.0918" y="73.5938"/><line style="stroke:#E7E7E7;stroke-width:0.5;stroke-dasharray:5,5;" x1="856.6064" x2="856.6064" y1="73.5938" y2="570.4531"/></g><g class="participant participant-head" data-participant="Wifi"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="150.8965" x="20" y="42.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.8965" x="27" y="62.292">WifiCommunication</text></g><g class="participant participant-tail" data-participant="Wifi"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="150.8965" x="20" y="569.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="136.8965" x="27" y="589.4482">WifiCommunication</text></g><g class="participant participant-head" data-participant="MessageDecoder"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="134.2715" x="219.7319" y="42.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.2715" x="226.7319" y="62.292">MessageDecoder</text></g><g class="participant participant-tail" data-participant="MessageDecoder"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="134.2715" x="219.7319" y="569.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120.2715" x="226.7319" y="589.4482">MessageDecoder</text></g><g class="participant participant-head" data-participant="Calibrator"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="83.166" x="376.7739" y="42.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.166" x="383.7739" y="62.292">Calibrator</text></g><g class="participant participant-tail" data-participant="Calibrator"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="83.166" x="376.7739" y="569.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69.166" x="383.7739" y="589.4482">Calibrator</text></g><g class="participant participant-head" data-participant="UWBAnchor"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="97.0361" x="617.3931" y="42.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83.0361" x="624.3931" y="62.292">UWBAnchor</text></g><g class="participant participant-tail" data-participant="UWBAnchor"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="97.0361" x="617.3931" y="569.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83.0361" x="624.3931" y="589.4482">UWBAnchor</text></g><g class="participant participant-head" data-participant="Display"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="126.9707" x="793.6064" y="42.2969"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.9707" x="800.6064" y="62.292">DisplayManager</text></g><g class="participant participant-tail" data-participant="Display"><rect fill="#222222" height="30.2969" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="126.9707" x="793.6064" y="569.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112.9707" x="800.6064" y="589.4482">DisplayManager</text></g><g><title>MessageDecoder</title><rect fill="#313139" height="29.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="281.8677" y="104.7266"/></g><g><title>Calibrator</title><rect fill="#313139" height="411.5938" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="413.3569" y="133.8594"/></g><g><title>UWBAnchor</title><rect fill="#313139" height="35.1328" style="stroke:#E7E7E7;stroke-width:1;" width="10" x="660.9111" y="205.125"/></g><g class="message" data-participant-1="Wifi" data-participant-2="MessageDecoder"><polygon fill="#E7E7E7" points="269.8677,100.7266,279.8677,104.7266,269.8677,108.7266,273.8677,104.7266" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="95.4482" x2="275.8677" y1="104.7266" y2="104.7266"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="167.4194" x="102.4482" y="99.6606">StartCalibration(deviceId)</text></g><g class="message" data-participant-1="MessageDecoder" data-participant-2="Calibrator"><polygon fill="#E7E7E7" points="401.3569,129.8594,411.3569,133.8594,401.3569,137.8594,405.3569,133.8594" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="286.8677" x2="407.3569" y1="133.8594" y2="133.8594"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="102.4893" x="293.8677" y="128.7935">StartCalibration</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="465.3569" y1="162.9922" y2="162.9922"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="465.3569" x2="465.3569" y1="162.9922" y2="175.9922"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.3569" x2="465.3569" y1="175.9922" y2="175.9922"/><polygon fill="#E7E7E7" points="434.3569,171.9922,424.3569,175.9922,434.3569,179.9922,430.3569,175.9922" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="145.1265" x="430.3569" y="157.9263">resetCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="UWBAnchor"><polygon fill="#E7E7E7" points="648.9111,201.125,658.9111,205.125,648.9111,209.125,652.9111,205.125" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="654.9111" y1="205.125" y2="205.125"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130.7236" x="430.3569" y="200.0591">switch to TAG mode</text></g><g class="message" data-participant-1="UWBAnchor" data-participant-2="UWBAnchor"><line style="stroke:#E7E7E7;stroke-width:1;" x1="670.9111" x2="712.9111" y1="239.2578" y2="239.2578"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="712.9111" x2="712.9111" y1="239.2578" y2="252.2578"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="665.9111" x2="712.9111" y1="252.2578" y2="252.2578"/><polygon fill="#E7E7E7" points="675.9111,248.2578,665.9111,252.2578,675.9111,256.2578,671.9111,252.2578" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157.1807" x="677.9111" y="234.1919">apply TAG configuration</text></g><path d="M366.7739,262.2578 L443.3979,262.2578 L443.3979,269.3906 L433.3979,279.3906 L366.7739,279.3906 L366.7739,262.2578" fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="117.5313" style="stroke:#FFFFFF;stroke-width:1.5;" width="563.8032" x="366.7739" y="262.2578"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="31.624" x="381.7739" y="275.3247">loop</text><text fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="176.8164" x="458.3979" y="274.4683">[until calibration is finished]</text><g class="message" data-participant-1="UWBAnchor" data-participant-2="Calibrator"><polygon fill="#E7E7E7" points="434.3569,296.5234,424.3569,300.5234,434.3569,304.5234,430.3569,300.5234" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="428.3569" x2="664.9111" y1="300.5234" y2="300.5234"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110.9697" x="440.3569" y="295.4575">onRangingData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="465.3569" y1="329.6563" y2="329.6563"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="465.3569" x2="465.3569" y1="329.6563" y2="342.6563"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.3569" x2="465.3569" y1="342.6563" y2="342.6563"/><polygon fill="#E7E7E7" points="434.3569,338.6563,424.3569,342.6563,434.3569,346.6563,430.3569,342.6563" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157.7202" x="430.3569" y="324.5903">updateCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Display"><polygon fill="#E7E7E7" points="845.0918,367.7891,855.0918,371.7891,845.0918,375.7891,849.0918,371.7891" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="851.0918" y1="371.7891" y2="371.7891"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96.0972" x="430.3569" y="366.7231">update display</text></g><path d="M10,393.7891 L74.4429,393.7891 L74.4429,400.9219 L64.4429,410.9219 L10,410.9219 L10,393.7891" fill="#555555" style="stroke:#FFFFFF;stroke-width:1.5;"/><rect fill="none" height="88.3984" style="stroke:#FFFFFF;stroke-width:1.5;" width="655.9111" x="10" y="393.7891"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="19.4429" x="25" y="406.856">alt</text><text fill="#FFFFFF" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="108.8989" x="89.4429" y="405.9995">[enoughSamples]</text><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="465.3569" y1="432.0547" y2="432.0547"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="465.3569" x2="465.3569" y1="432.0547" y2="445.0547"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="424.3569" x2="465.3569" y1="445.0547" y2="445.0547"/><polygon fill="#E7E7E7" points="434.3569,441.0547,424.3569,445.0547,434.3569,449.0547,430.3569,445.0547" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213.5542" x="430.3569" y="426.9888">makeJSONFromCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Wifi"><polygon fill="#E7E7E7" points="106.4482,470.1875,96.4482,474.1875,106.4482,478.1875,102.4482,474.1875" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="100.4482" x2="412.3569" y1="474.1875" y2="474.1875"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143.1777" x="112.4482" y="469.1216">sendCalibrationData()</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Display"><polygon fill="#E7E7E7" points="845.0918,506.3203,855.0918,510.3203,845.0918,514.3203,849.0918,510.3203" style="stroke:#E7E7E7;stroke-width:1;"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="851.0918" y1="510.3203" y2="510.3203"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96.0972" x="430.3569" y="505.2544">update display</text></g><g class="message" data-participant-1="Calibrator" data-participant-2="Calibrator"><line style="stroke:#E7E7E7;stroke-width:1;" x1="423.3569" x2="465.3569" y1="544.4531" y2="544.4531"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="465.3569" x2="465.3569" y1="544.4531" y2="557.4531"/><line style="stroke:#E7E7E7;stroke-width:1;" x1="418.3569" x2="465.3569" y1="557.4531" y2="557.4531"/><polygon fill="#E7E7E7" points="428.3569,553.4531,418.3569,557.4531,428.3569,561.4531,424.3569,557.4531" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="105.3647" x="430.3569" y="539.3872">endCalibration()</text></g></g></svg></div></div>
+
+<h3 id="la-matrice-de-distances">La matrice de distances</h3>
+<p>Une fois les mesures de distances inter-anchors collectées, elles sont organisées dans une <strong>matrice de distance</strong> pour le traitement ultérieur :</p>
+<div class="arithmatex">\[
+D =
+\begin{bmatrix}
+0 &amp; d_{12} &amp; d_{13} &amp; \cdots &amp; d_{1n} \\
+d_{21} &amp; 0 &amp; d_{23} &amp; \cdots &amp; d_{2n} \\
+d_{31} &amp; d_{32} &amp; 0 &amp; \cdots &amp; d_{3n} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+d_{n1} &amp; d_{n2} &amp; d_{n3} &amp; \cdots &amp; 0
+\end{bmatrix}
+\]</div>
+<p>où <span class="arithmatex">\(d_{ij}\)</span> désigne la distance mesurée entre les anchors <span class="arithmatex">\(i\)</span> et <span class="arithmatex">\(j\)</span>.<br />
+En théorie, <span class="arithmatex">\(D\)</span> est symétrique (<span class="arithmatex">\(d_{ij} = d_{ji}\)</span>), mais des écarts peuvent apparaître à cause du bruit de mesure ou d’erreurs de synchronisation.</p>
+<h2 id="reconstruction-des-positions">Reconstruction des positions</h2>
+<p>L’objectif est de retrouver les coordonnées <span class="arithmatex">\(\mathbf{p}_i = (x_i, y_i)\)</span> des <span class="arithmatex">\(n\)</span> anchors telles que :</p>
+<div class="arithmatex">\[
+\|\mathbf{p}_i - \mathbf{p}_j\| \approx d_{ij}, \quad \forall (i, j)
+\]</div>
+<p>C’est un <strong>problème de multidimensional scaling</strong> (MDS) ou d’<strong>ajustement géométrique par moindres carrés non linéaires</strong>.</p>
+<h2 id="mise-en-place-du-repere">Mise en place du repère</h2>
+<p>Pour lever l’ambiguïté liée aux rotations et translations, deux anchors sont fixées comme références :</p>
+<ul>
+<li><span class="arithmatex">\(A_0\)</span> est placée à l’origine : <span class="arithmatex">\(\mathbf{p}_0 = (0, 0)\)</span>  </li>
+<li><span class="arithmatex">\(A_1\)</span> est placée sur l’axe des x : <span class="arithmatex">\(\mathbf{p}_1 = (d_{01}, 0)\)</span></li>
+</ul>
+<p>Les autres anchors <span class="arithmatex">\(A_k\)</span> sont initialisées par <strong>triangulation</strong> à partir de ces deux références :</p>
+<div class="arithmatex">\[
+\begin{cases}
+x_k = \dfrac{d_{0k}^2 - d_{1k}^2 + d_{01}^2}{2d_{01}} \\
+y_k = \sqrt{d_{0k}^2 - x_k^2}
+\end{cases}
+\]</div>
+<p>Cette étape fournit une <strong>estimation initiale</strong> cohérente des positions.</p>
+<h2 id="optimisation-par-descente-de-gradient">Optimisation par descente de gradient</h2>
+<p>Les positions initiales sont ensuite <strong>optimisées numériquement</strong> afin de minimiser l’erreur entre les distances mesurées et les distances géométriques reconstruites :</p>
+<div class="arithmatex">\[
+E = \sum_{i&lt;j} \left( \|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij} \right)^2
+\]</div>
+<p>Une <strong>descente de gradient</strong> met à jour les positions à chaque itération selon :</p>
+<div class="arithmatex">\[
+\mathbf{p}_i \leftarrow \mathbf{p}_i - \eta \, \nabla_{\mathbf{p}_i} E
+\]</div>
+<p>où <span class="arithmatex">\(\eta\)</span> est le taux d’apprentissage, et le gradient s’écrit :</p>
+<div class="arithmatex">\[
+\nabla_{\mathbf{p}_i} E = 2 \sum_{j \ne i} \left( \|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij} \right) \frac{\mathbf{p}_i - \mathbf{p}_j}{\|\mathbf{p}_i - \mathbf{p}_j\|}
+\]</div>
+<p>Pendant cette optimisation :
+- L’anchor <span class="arithmatex">\(A_0\)</span> reste fixe (origine du repère),
+- L’anchor <span class="arithmatex">\(A_1\)</span> reste sur l’axe des x (contrainte de rotation).</p>
+<p>L’algorithme converge lorsque l’erreur moyenne devient stable ou inférieure à un seuil défini.</p>
+<h2 id="normalisation-et-echelle">Normalisation et échelle</h2>
+<p>Une fois les positions obtenues, elles peuvent être <strong>normalisées</strong> afin de tenir dans un cadre cohérent (utile pour l’affichage ou le traitement ultérieur).<br />
+On calcule le <strong>rectangle englobant</strong> de toutes les positions, puis on met à l’échelle :</p>
+<div class="arithmatex">\[
+\mathbf{p}_i^{(norm)} = \dfrac{\mathbf{p}_i - \mathbf{p}_{min}}{\max(\Delta x, \Delta y)}
+\]</div>
+<p>où <span class="arithmatex">\(\Delta x\)</span> et <span class="arithmatex">\(\Delta y\)</span> représentent les dimensions maximales du nuage de points.</p>
+<h2 id="evaluation-de-lerreur-relative">Évaluation de l’erreur relative</h2>
+<p>L’erreur finale est exprimée en <strong>erreur quadratique moyenne relative</strong> :</p>
+<div class="arithmatex">\[
+\text{Erreur} = \frac{\sqrt{\dfrac{1}{N}\sum_{i&lt;j} (\|\mathbf{p}_i - \mathbf{p}_j\| - d_{ij})^2}}{\bar{d}} \times 100
+\]</div>
+<p>avec <span class="arithmatex">\(\bar{d}\)</span> la distance moyenne entre anchors.<br />
+Cette mesure reflète la cohérence géométrique du réseau d’anchors après calibration.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>
